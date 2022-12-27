@@ -1,0 +1,3365 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Projet Complet de Data Science &#8212; Data Scientist</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Projet : Manipulationn de Base de données NoSQL" href="lecture03.html" />
+    <link rel="prev" title="Analyse des données du jeu de donnnées des voitures d’occasion" href="lecture01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Scientist</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture01.html">
+   <strong>
+    Analyse des données du jeu de donnnées des voitures d’occasion
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Projet Complet de Data Science
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture03.html">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture04.html">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/aigleroyale/portline/blob/main/lecture02.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aigleroyale/portline"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lecture02.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construction-d-un-modeles-de-machine-learning-pour-predire-le-desabonnement-des-clients-d-une-entreprise-customer-churn">
+   <strong>
+    Construction d’un modèles de Machine Learning pour prédire le désabonnement des clients d’une entreprise (CUSTOMER CHURN)
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#table-des-matieres">
+     Table des Matières
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importantion-des-outils-necessaires">
+   Importantion des outils nécessaires
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-exploratoire-des-donnees">
+   Analyse Exploratoire des données
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pretraitement-des-donnees">
+   Prétraitement des données
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Projet Complet de Data Science</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construction-d-un-modeles-de-machine-learning-pour-predire-le-desabonnement-des-clients-d-une-entreprise-customer-churn">
+   <strong>
+    Construction d’un modèles de Machine Learning pour prédire le désabonnement des clients d’une entreprise (CUSTOMER CHURN)
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#table-des-matieres">
+     Table des Matières
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importantion-des-outils-necessaires">
+   Importantion des outils nécessaires
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse-exploratoire-des-donnees">
+   Analyse Exploratoire des données
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pretraitement-des-donnees">
+   Prétraitement des données
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="projet-complet-de-data-science">
+<h1><strong>Projet Complet de Data Science</strong><a class="headerlink" href="#projet-complet-de-data-science" title="Permalink to this headline">#</a></h1>
+<section id="construction-d-un-modeles-de-machine-learning-pour-predire-le-desabonnement-des-clients-d-une-entreprise-customer-churn">
+<h2><strong>Construction d’un modèles de Machine Learning pour prédire le désabonnement des clients d’une entreprise (CUSTOMER CHURN)</strong><a class="headerlink" href="#construction-d-un-modeles-de-machine-learning-pour-predire-le-desabonnement-des-clients-d-une-entreprise-customer-churn" title="Permalink to this headline">#</a></h2>
+<section id="table-des-matieres">
+<h3>Table des Matières<a class="headerlink" href="#table-des-matieres" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="#Intro">Introduction</a></p></li>
+<li><p><a class="reference external" href="#Import">Importantion des outils nécessaires</a></p></li>
+<li><p><a class="reference external" href="#ImportData">Importation des donnnées</a></p></li>
+<li><p><a class="reference external" href="#AED">Analyse exploratoire des données</a></p></li>
+<li><p><a class="reference external" href="#PD">Prétraitement des données</a></p></li>
+<li><p><a class="reference external" href="#Mod">Modélisation</a></p>
+<ul>
+<li><p><a class="reference external" href="#MRG">Modèle de Régression Logistique</a></p></li>
+<li><p><a class="reference external" href="#MFA">Modèle de Forêt Aléatoire</a></p></li>
+<li><p><a class="reference external" href="#CPM">Classificateur Perceptron Multicouche</a></p></li>
+<li><p><a class="reference external" href="#SVM">Support Vector Machine</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#Concl">Conclusion</a></p></li>
+</ul>
+<p><a name="Intro"></a></p>
+</section>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p><img alt="image" src="_images/customer.jpg" /></p>
+<p>Le désabonnement d’un client se produit lorsque ce dernier décide de cesser d’utiliser les services, le contenu ou les produits d’une entreprise.
+Il existe de nombreux exemples et cas de désabonnement:</p>
+<ul class="simple">
+<li><p>Annulation d’un service sous contrat ou non</p></li>
+<li><p>Achat dans un autre magasin concurrent</p></li>
+<li><p>Désabonnement d’une newsletter</p></li>
+<li><p>Clôture de compte bancaire</p></li>
+<li><p>Etc</p></li>
+</ul>
+<p>Ainsi, l’entreprise doit mieux comprendre le comportement de ses clients afin de les fidéliser.</p>
+<p>Une façon de le faire consiste à créer <strong>un modèle de Machine Learning ou de Réseau de Neuronnes Artificielles qui peut prédire quels sont les clients sont susceptibles de se désabonner.</strong></p>
+<p>Dans ce projet, nous explorerons un ensemble de données d’une entreprise de télécommunications et créerons un modèle dans le but de prédire les clients présentant un risque de désabonnement plus élevé.</p>
+<p>Nous utiliserons différents algorithmes de Machine Learning afin de comparer leurs performances puis nous déterminerons le meilleur modèle.</p>
+<p><a name="Import"></a></p>
+</section>
+<section id="importantion-des-outils-necessaires">
+<h2>Importantion des outils nécessaires<a class="headerlink" href="#importantion-des-outils-necessaires" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+import ipywidgets as widgets
+from ipywidgets import interact, interactive, fixed, interact_manual
+
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from sklearn.utils import resample
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import classification_report
+from sklearn.feature_selection import RFE
+</pre></div>
+</div>
+</div>
+</div>
+<p>Les données ont été téléchargées sur <strong><a class="reference external" href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download">kaggle</a></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># importation des données
+
+df = pd.read_csv(&quot;RawData/Telco_Customer_Churn.csv&quot;)
+
+df.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>customerID</th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>tenure</th>
+      <th>PhoneService</th>
+      <th>MultipleLines</th>
+      <th>InternetService</th>
+      <th>OnlineSecurity</th>
+      <th>...</th>
+      <th>DeviceProtection</th>
+      <th>TechSupport</th>
+      <th>StreamingTV</th>
+      <th>StreamingMovies</th>
+      <th>Contract</th>
+      <th>PaperlessBilling</th>
+      <th>PaymentMethod</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7590-VHVEG</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>1</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>29.85</td>
+      <td>29.85</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5575-GNVDE</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>34</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Mailed check</td>
+      <td>56.95</td>
+      <td>1889.5</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3668-QPYBK</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Mailed check</td>
+      <td>53.85</td>
+      <td>108.15</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7795-CFOCW</td>
+      <td>Male</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>45</td>
+      <td>No</td>
+      <td>No phone service</td>
+      <td>DSL</td>
+      <td>Yes</td>
+      <td>...</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>One year</td>
+      <td>No</td>
+      <td>Bank transfer (automatic)</td>
+      <td>42.30</td>
+      <td>1840.75</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>9237-HQITU</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>No</td>
+      <td>No</td>
+      <td>2</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Fiber optic</td>
+      <td>No</td>
+      <td>...</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Month-to-month</td>
+      <td>Yes</td>
+      <td>Electronic check</td>
+      <td>70.70</td>
+      <td>151.65</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div></div>
+</div>
+<p>La description des variables se trouve ici <strong><a class="reference external" href="https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download">description</a></strong></p>
+<p>La variable cible est la variable <strong>Churn</strong> qui prend deux valeurs : <em><strong>Yes</strong> (Le client s’est désabonné</em> et <em><strong>No</strong> (Le client ne s’est pas désabonné)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># information sur les données
+
+df.info()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 7043 entries, 0 to 7042
+Data columns (total 21 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   customerID        7043 non-null   object 
+ 1   gender            7043 non-null   object 
+ 2   SeniorCitizen     7043 non-null   int64  
+ 3   Partner           7043 non-null   object 
+ 4   Dependents        7043 non-null   object 
+ 5   tenure            7043 non-null   int64  
+ 6   PhoneService      7043 non-null   object 
+ 7   MultipleLines     7043 non-null   object 
+ 8   InternetService   7043 non-null   object 
+ 9   OnlineSecurity    7043 non-null   object 
+ 10  OnlineBackup      7043 non-null   object 
+ 11  DeviceProtection  7043 non-null   object 
+ 12  TechSupport       7043 non-null   object 
+ 13  StreamingTV       7043 non-null   object 
+ 14  StreamingMovies   7043 non-null   object 
+ 15  Contract          7043 non-null   object 
+ 16  PaperlessBilling  7043 non-null   object 
+ 17  PaymentMethod     7043 non-null   object 
+ 18  MonthlyCharges    7043 non-null   float64
+ 19  TotalCharges      7043 non-null   object 
+ 20  Churn             7043 non-null   object 
+dtypes: float64(1), int64(2), object(18)
+memory usage: 1.1+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il n’y a pas de valeurs manquantes dans ce jeu de données !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Nombre de valeurs uniques par colonne
+
+df.nunique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>customerID          7043
+gender                 2
+SeniorCitizen          2
+Partner                2
+Dependents             2
+tenure                73
+PhoneService           2
+MultipleLines          3
+InternetService        3
+OnlineSecurity         3
+OnlineBackup           3
+DeviceProtection       3
+TechSupport            3
+StreamingTV            3
+StreamingMovies        3
+Contract               3
+PaperlessBilling       2
+PaymentMethod          4
+MonthlyCharges      1585
+TotalCharges        6531
+Churn                  2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name="AED"></a></p>
+</section>
+<section id="analyse-exploratoire-des-donnees">
+<h2>Analyse Exploratoire des données<a class="headerlink" href="#analyse-exploratoire-des-donnees" title="Permalink to this headline">#</a></h2>
+<p>Commençons notre exploration en traçant un graphiques de la distribution de chaque variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Variables catégorielles
+
+categorical_columns = df.nunique()[df.nunique() &lt; 5].keys().to_list()
+categorical_columns
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;gender&#39;,
+ &#39;SeniorCitizen&#39;,
+ &#39;Partner&#39;,
+ &#39;Dependents&#39;,
+ &#39;PhoneService&#39;,
+ &#39;MultipleLines&#39;,
+ &#39;InternetService&#39;,
+ &#39;OnlineSecurity&#39;,
+ &#39;OnlineBackup&#39;,
+ &#39;DeviceProtection&#39;,
+ &#39;TechSupport&#39;,
+ &#39;StreamingTV&#39;,
+ &#39;StreamingMovies&#39;,
+ &#39;Contract&#39;,
+ &#39;PaperlessBilling&#39;,
+ &#39;PaymentMethod&#39;,
+ &#39;Churn&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Création d&#39;une fonction pour construire un graphique en bâton et de manière intéractive
+
+def bar_plot(a):
+    df[a].value_counts(normalize=True).plot(kind=&#39;bar&#39;)
+    plt.title(&quot;Distribution of &quot; + str(a))
+    plt.ylabel(&quot;Proportion&quot;)
+    return plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Interact
+interact(bar_plot, a = categorical_columns)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "1053e343da9f46bfba5a80155caf1cd7", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.bar_plot(a)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bar_plot(&quot;Churn&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_15_0.png" src="_images/lecture02_15_0.png" />
+</div>
+</div>
+<p>Nous pouvons interagir avec le notebook en selectionnant la variable catégorielle qui nous intéresse.</p>
+<p>Voici quelques informations importanytes que nous pouvons tirer de ces graphiques:</p>
+<ul class="simple">
+<li><p>Il y a plus de clients qui ne se sont pas désabonnés (70%) que de clients qui se sont désabonnés (30%)</p></li>
+</ul>
+<p>Cela peut déséquilibrer les modèles</p>
+<ul class="simple">
+<li><p>Il y a presqu’autant d’hommes que de femmes</p></li>
+<li><p>Le nombre de clients formés des personnes agées est bien inférieur à celui des clients jeunes</p></li>
+</ul>
+<p>Nous pouvons répéter le même processus cette fois-ci pour les variables numériques</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Echantillon aléatoire de la variable &quot;TotalCharges&quot;
+
+df[&#39;TotalCharges&#39;].sample(10)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6816       70.3
+6617    3887.85
+2804      259.8
+6359    4238.45
+853      352.65
+53        633.3
+6044        893
+2903     432.25
+5377      249.4
+2569    1871.85
+Name: TotalCharges, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>La présence d’espace au niveau de la variable TotalCharges la transforme en object alors qu’elle est numérique.</p>
+<p>Remplaçons ces espaces</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&#39;TotalCharges&#39;] = df[&#39;TotalCharges&#39;].replace(&#39; &#39;, np.nan).astype(float)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>numerical_colums = [&#39;tenure&#39;, &#39;MonthlyCharges&#39;, &#39;TotalCharges&#39;]
+
+def hist_plot(b):
+    sns.displot(df[b], kde = False)
+    plt.title(&quot;Histogram of&quot; + str(b))
+    return plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Interact
+interact(hist_plot, b = numerical_colums)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "aa34ac6c9972458d9fc6be2ca6f74c15", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.hist_plot(b)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> hist_plot(&quot;TotalCharges&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_22_0.png" src="_images/lecture02_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Coefficient d&#39;asymétrie de la variable &#39;TotalCharges&#39;
+
+df[&#39;TotalCharges&#39;].skew()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.961642499724251
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Création d&#39;une fonction de construction de boite à moustaches
+
+def box_plot(c):
+    sns.boxplot(y=df[c])
+    plt.title(&quot;Boxplot of&quot; + str(c))
+    return plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>interact(box_plot, c = numerical_colums)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "9dfcb1ab0b984b2eb764d8f0a9a97964", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.box_plot(c)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous constatons une forte asymétrie dans ces variables, cela peut causer des erreurs au niveau des modèles</p>
+<p>Comme astuce, nous pouvons appliquer des transformations afin de les rendre moins asymétrique.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TotalCharges vs Churn
+
+sns.boxplot(data = df, x=&#39;Churn&#39;, y=&#39;TotalCharges&#39;)
+plt.xlabel(&#39;Desabonnement&#39;)
+plt.ylabel(&#39;Facture totale&#39;)
+plt.title(&#39;Montant total facturé au client&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_27_0.png" src="_images/lecture02_27_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># MonthlyCharges vs Churn
+
+sns.boxplot(data = df, x=&#39;Churn&#39;, y=&#39;MonthlyCharges&#39;)
+plt.xlabel(&#39;Desabonnement&#39;)
+plt.ylabel(&#39;Facture mensuelle&#39;)
+plt.title(&#39;Montant facturé mensuellement au client&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_28_0.png" src="_images/lecture02_28_0.png" />
+</div>
+</div>
+<p>Ainsi de suite, nous pouvons faire ce genre de comparaions. C’est cela l’exploration des données.</p>
+<p>Un des résultat :</p>
+<p><strong>Le montant facturé aux clients qui ont résilié leur contrat est inférieur au montant total facturé aux clients qui ne l’ont pas fait. Mais les clients qui se sont désabonnés sont plus facturés mensuellement que les clients qui ne se sont pas désabonnés</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># MonthlyCharges vs Churn by SeniorCitizen
+plt.figure(figsize = (8,5))
+sns.boxplot(data = df, x =&quot;Churn&quot;, y = &quot;MonthlyCharges&quot;, hue = &quot;SeniorCitizen&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_30_0.png" src="_images/lecture02_30_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize = (8,5))
+sns.boxplot(data = df, x =&quot;Churn&quot;, y = &quot;MonthlyCharges&quot;, hue = &quot;Dependents&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_31_0.png" src="_images/lecture02_31_0.png" />
+</div>
+</div>
+<p>Il existe de nombreux autres analyses que nous pouvons faire</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Résumé statistique
+
+df.describe()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SeniorCitizen</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>7043.000000</td>
+      <td>7043.000000</td>
+      <td>7043.000000</td>
+      <td>7032.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.162147</td>
+      <td>32.371149</td>
+      <td>64.761692</td>
+      <td>2283.300441</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.368612</td>
+      <td>24.559481</td>
+      <td>30.090047</td>
+      <td>2266.771362</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>18.250000</td>
+      <td>18.800000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>0.000000</td>
+      <td>9.000000</td>
+      <td>35.500000</td>
+      <td>401.450000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000000</td>
+      <td>29.000000</td>
+      <td>70.350000</td>
+      <td>1397.475000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.000000</td>
+      <td>55.000000</td>
+      <td>89.850000</td>
+      <td>3794.737500</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.000000</td>
+      <td>72.000000</td>
+      <td>118.750000</td>
+      <td>8684.800000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Au délà des chiffres, nous voyons une différence des échelles entre les variables.</p>
+<p>Cela nous conduira certainement à la <strong>Standardisation</strong></p>
+<p><a name="PD"></a></p>
+</section>
+<section id="pretraitement-des-donnees">
+<h2>Prétraitement des données<a class="headerlink" href="#pretraitement-des-donnees" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Gestion des valeurs manquantes
+
+data = df.copy()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.isna().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>customerID           0
+gender               0
+SeniorCitizen        0
+Partner              0
+Dependents           0
+tenure               0
+PhoneService         0
+MultipleLines        0
+InternetService      0
+OnlineSecurity       0
+OnlineBackup         0
+DeviceProtection     0
+TechSupport          0
+StreamingTV          0
+StreamingMovies      0
+Contract             0
+PaperlessBilling     0
+PaymentMethod        0
+MonthlyCharges       0
+TotalCharges        11
+Churn                0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>11/data.shape[0]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.001561834445548772
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Suppression des valeurs manquantes
+
+data.dropna(inplace = True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Encodage des variables binaires
+
+data[&#39;gender&#39;] = data[&#39;gender&#39;].apply(lambda row: 1 if row == &quot;female&quot; else 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>binary_columns = data.drop(&#39;gender&#39;, axis = 1).nunique()[data.drop(&#39;gender&#39;, axis = 1).nunique() &lt; 3].keys().to_list()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>binary_columns
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;SeniorCitizen&#39;,
+ &#39;Partner&#39;,
+ &#39;Dependents&#39;,
+ &#39;PhoneService&#39;,
+ &#39;PaperlessBilling&#39;,
+ &#39;Churn&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for column in binary_columns:
+    data[column] = data[column].apply(lambda row: 1 if row == &quot;Yes&quot; else 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Encodage des variables catégorielles restantes
+
+remaining_cat_vars = data[categorical_columns].nunique()[data[categorical_columns].nunique() &gt; 2 ].keys().to_list()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>remaining_cat_vars
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;MultipleLines&#39;,
+ &#39;InternetService&#39;,
+ &#39;OnlineSecurity&#39;,
+ &#39;OnlineBackup&#39;,
+ &#39;DeviceProtection&#39;,
+ &#39;TechSupport&#39;,
+ &#39;StreamingTV&#39;,
+ &#39;StreamingMovies&#39;,
+ &#39;Contract&#39;,
+ &#39;PaymentMethod&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>remaining_cat_vars_dummies = pd.get_dummies(data = data[remaining_cat_vars], columns = remaining_cat_vars, drop_first = True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>remaining_cat_vars_dummies.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
+      <th>OnlineSecurity_No internet service</th>
+      <th>OnlineSecurity_Yes</th>
+      <th>OnlineBackup_No internet service</th>
+      <th>OnlineBackup_Yes</th>
+      <th>DeviceProtection_No internet service</th>
+      <th>DeviceProtection_Yes</th>
+      <th>...</th>
+      <th>TechSupport_Yes</th>
+      <th>StreamingTV_No internet service</th>
+      <th>StreamingTV_Yes</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Nouvelle dataframe
+
+data = pd.concat([data[&#39;gender&#39;], data[binary_columns], remaining_cat_vars_dummies, data[numerical_colums]], axis = 1)
+
+data.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>PhoneService</th>
+      <th>PaperlessBilling</th>
+      <th>Churn</th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>...</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>29.85</td>
+      <td>29.85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>34</td>
+      <td>56.95</td>
+      <td>1889.50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>53.85</td>
+      <td>108.15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>45</td>
+      <td>42.30</td>
+      <td>1840.75</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>70.70</td>
+      <td>151.65</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#
+data.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7032, 31)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous avons vu que la variable “TotalCharges” était asymétrique alors transformons la par une fonction racine carrée</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data[&quot;TotalCharges&quot;] = np.sqrt(data[&quot;TotalCharges&quot;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data[&quot;TotalCharges&quot;], kde = True);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_52_0.png" src="_images/lecture02_52_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.TotalCharges.skew()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3089261418986736
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Données d&#39;entrainement 60% et de validation 20% et de test 20%
+
+X = data.drop(&#39;Churn&#39;, axis = 1)
+y = data[&#39;Churn&#39;]
+
+seed = 123
+
+X_train, X_test, y_train, y_test = train_test_split(X, y , test_size = 0.4, random_state = seed, stratify = y)
+
+X_val, X_test, y_val, y_test = train_test_split(X_test, y_test , test_size = 0.5, random_state = seed, stratify = y_test)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il faut s’assurer que les proportions de personnes ayant résilié ou non leur contrat soient les mêmes dans les différents ensemble de données</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fréquence dans les classes dans y &amp; y_train
+
+pd.DataFrame(y).value_counts(normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Churn
+0        0.734215
+1        0.265785
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.DataFrame(y_train).value_counts(normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Churn
+0        0.734297
+1        0.265703
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Quant aux problèmes de déséquilibre de classe dans les données, nous pouvons utiliser le réechantillonnage pour créer plus d’équilibre entre les catégories de la variable cible.</p>
+<p>Soit créer plus d’observations dans la classe minoritaire ou diminuer les observations de la classe majoritaire.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X2 = X_train
+
+X2[&#39;Churn&#39;] = y_train.values
+
+minority = X2[X2.Churn == 1]
+
+majority = X2[X2.Churn == 0]
+
+minority_upsampled =  resample(minority, replace = True, n_samples = len(majority), random_state = seed)
+
+upsampled = pd.concat([majority, minority_upsampled])
+
+upsampled.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>PhoneService</th>
+      <th>PaperlessBilling</th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
+      <th>...</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5624</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>62</td>
+      <td>89.80</td>
+      <td>75.030327</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6827</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>60</td>
+      <td>79.05</td>
+      <td>68.289091</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2309</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>57</td>
+      <td>90.45</td>
+      <td>72.317356</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6291</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+      <td>79.85</td>
+      <td>69.181645</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3036</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>67</td>
+      <td>49.35</td>
+      <td>57.631155</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Vérification
+
+upsampled[&#39;Churn&#39;].value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    3098
+1    3098
+Name: Churn, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_train_up = upsampled.drop(&#39;Churn&#39;, axis = 1)
+
+y_train_up = upsampled[&#39;Churn&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>majority_downsampled =  resample(majority, replace = False, n_samples = len(minority), random_state = seed)
+
+downsampled = pd.concat([minority, majority_downsampled])
+
+downsampled
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>PhoneService</th>
+      <th>PaperlessBilling</th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
+      <th>...</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+      <th>Churn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3725</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>70.80</td>
+      <td>8.414274</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6597</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>70.75</td>
+      <td>21.232051</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3779</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>66</td>
+      <td>79.40</td>
+      <td>71.795543</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2208</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>100.80</td>
+      <td>10.039920</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2894</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>48</td>
+      <td>60.35</td>
+      <td>53.818213</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>802</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>39</td>
+      <td>23.80</td>
+      <td>30.063267</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>13</td>
+      <td>54.80</td>
+      <td>27.042559</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6635</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>24</td>
+      <td>20.10</td>
+      <td>23.106276</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2568</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>15</td>
+      <td>19.35</td>
+      <td>16.698802</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>11</td>
+      <td>82.90</td>
+      <td>29.665637</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2242 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>downsampled[&#39;Churn&#39;].value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    1121
+0    1121
+Name: Churn, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Données d&#39;entrainement sur la méthode de sous-échantillonnage de la classe majoritaire
+
+X_train_down = downsampled.drop(&#39;Churn&#39;, axis = 1)
+
+y_train_down = downsampled[&#39;Churn&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y_train = X_train[&#39;Churn&#39;]
+
+X_train = X_train.drop(&#39;Churn&#39;, axis = 1) 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Définition des données d&#39;entrainement
+
+# Choix possibles : (X_train, y_train), (X_train_up, y_train_up) et (X_train_down, y_train_down)
+
+train_features = X_train_up
+
+train_labels = y_train_up
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Normalisation des données
+
+train_features.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>PhoneService</th>
+      <th>PaperlessBilling</th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
+      <th>...</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5624</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>62</td>
+      <td>89.80</td>
+      <td>75.030327</td>
+    </tr>
+    <tr>
+      <th>6827</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>60</td>
+      <td>79.05</td>
+      <td>68.289091</td>
+    </tr>
+    <tr>
+      <th>2309</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>57</td>
+      <td>90.45</td>
+      <td>72.317356</td>
+    </tr>
+    <tr>
+      <th>6291</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+      <td>79.85</td>
+      <td>69.181645</td>
+    </tr>
+    <tr>
+      <th>3036</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>67</td>
+      <td>49.35</td>
+      <td>57.631155</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scaler = MinMaxScaler()
+mod_scaler = scaler.fit(train_features)
+train_features = mod_scaler.transform(train_features)
+X_val = mod_scaler.transform(X_val)
+X_test = mod_scaler.transform(X_test)
+
+# Retransformation en datraframe
+
+
+train_features = pd.DataFrame(train_features, columns = X.columns)
+X_val = pd.DataFrame(X_val, columns = X.columns)
+X_test = pd.DataFrame(X_test, columns = X.columns)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train_features.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>SeniorCitizen</th>
+      <th>Partner</th>
+      <th>Dependents</th>
+      <th>PhoneService</th>
+      <th>PaperlessBilling</th>
+      <th>MultipleLines_No phone service</th>
+      <th>MultipleLines_Yes</th>
+      <th>InternetService_Fiber optic</th>
+      <th>InternetService_No</th>
+      <th>...</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>StreamingMovies_Yes</th>
+      <th>Contract_One year</th>
+      <th>Contract_Two year</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>TotalCharges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.859155</td>
+      <td>0.711940</td>
+      <td>0.796197</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.830986</td>
+      <td>0.604975</td>
+      <td>0.720274</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.788732</td>
+      <td>0.718408</td>
+      <td>0.765642</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.816901</td>
+      <td>0.612935</td>
+      <td>0.730326</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.929577</td>
+      <td>0.309453</td>
+      <td>0.600239</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 30 columns</p>
+</div></div></div>
+</div>
+<p>Nous choisissons la F1 score pour évaluer la performance des modèles</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Selection des meilleurs variables prédictrices
+
+rf = RandomForestClassifier()
+
+rf.fit(train_features, train_labels)
+
+print(classification_report(y_val, rf.predict(X_val)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.85      0.86      0.85      1032
+           1       0.60      0.58      0.59       374
+
+    accuracy                           0.78      1406
+   macro avg       0.72      0.72      0.72      1406
+weighted avg       0.78      0.78      0.78      1406
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Importances des variables indépendantes
+plt.figure(figsize = (12,6))
+vars_imp = pd.Series(rf.feature_importances_, index = train_features.columns).sort_values(ascending=False)
+
+sns.barplot(x = vars_imp.index, y = vars_imp)
+plt.xticks(rotation = 90)
+plt.xlabel(&quot;Variables&quot;)
+plt.ylabel(&quot;Score d&#39;importance de la variable&quot;)
+plt.title(&quot;Importances des variables indépendantes&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture02_72_0.png" src="_images/lecture02_72_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vars_imp
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TotalCharges                             0.196582
+tenure                                   0.177680
+MonthlyCharges                           0.159669
+Contract_Two year                        0.061960
+InternetService_Fiber optic              0.044862
+PaymentMethod_Electronic check           0.034106
+Contract_One year                        0.030677
+PaperlessBilling                         0.026855
+TechSupport_Yes                          0.025444
+OnlineSecurity_Yes                       0.023946
+Partner                                  0.023876
+OnlineBackup_Yes                         0.020396
+Dependents                               0.020295
+DeviceProtection_Yes                     0.018192
+MultipleLines_Yes                        0.018068
+StreamingMovies_Yes                      0.017220
+StreamingTV_Yes                          0.015469
+PaymentMethod_Credit card (automatic)    0.013886
+PaymentMethod_Mailed check               0.013018
+OnlineSecurity_No internet service       0.008939
+DeviceProtection_No internet service     0.008636
+OnlineBackup_No internet service         0.008464
+TechSupport_No internet service          0.007801
+StreamingMovies_No internet service      0.007171
+InternetService_No                       0.004550
+PhoneService                             0.004299
+MultipleLines_No phone service           0.003993
+StreamingTV_No internet service          0.003946
+SeniorCitizen                            0.000000
+gender                                   0.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Variables sélectionnées pour les algorithmes
+
+seuil = 0.004
+
+vars_selected = vars_imp[vars_imp &gt; seuil].index.to_list()
+
+train_features = train_features[vars_selected]
+
+X_val = X_val[vars_selected]
+
+X_test = X_test[vars_selected]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(train_features.columns)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>train_features.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalCharges</th>
+      <th>tenure</th>
+      <th>MonthlyCharges</th>
+      <th>Contract_Two year</th>
+      <th>InternetService_Fiber optic</th>
+      <th>PaymentMethod_Electronic check</th>
+      <th>Contract_One year</th>
+      <th>PaperlessBilling</th>
+      <th>TechSupport_Yes</th>
+      <th>OnlineSecurity_Yes</th>
+      <th>...</th>
+      <th>StreamingTV_Yes</th>
+      <th>PaymentMethod_Credit card (automatic)</th>
+      <th>PaymentMethod_Mailed check</th>
+      <th>OnlineSecurity_No internet service</th>
+      <th>DeviceProtection_No internet service</th>
+      <th>OnlineBackup_No internet service</th>
+      <th>TechSupport_No internet service</th>
+      <th>StreamingMovies_No internet service</th>
+      <th>InternetService_No</th>
+      <th>PhoneService</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.796197</td>
+      <td>0.859155</td>
+      <td>0.711940</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.720274</td>
+      <td>0.830986</td>
+      <td>0.604975</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.765642</td>
+      <td>0.788732</td>
+      <td>0.718408</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.730326</td>
+      <td>0.816901</td>
+      <td>0.612935</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.600239</td>
+      <td>0.929577</td>
+      <td>0.309453</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
+</div>
+<p>Notre objectif est de construire un modèle de classification qui prédit si un client va se désabonner ou non.</p>
+<p>Nous utiliserons différents algorithmes (<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">Logistic Regression</a>, <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest</a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">Gradient Boosting</a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/neural_networks_supervised.html#multi-layer-perceptron">Classificateur Perceptron Multicouche</a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html">Support Vector Machine</a> afin de comparer leurs performances et de choisir le meilleur modèle</p>
+<p><a name="MRG"></a>
+<a class="reference external" href="#MRG">Modèle de Régression Logistic</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Dictionnaire des hyperparamètres
+
+param_grid = {&#39;C&#39;:[0.001, 0.01, 1, 10, 50, 100, 500]}
+
+# Object GridSearchCV
+
+grid_logreg_class = GridSearchCV(estimator = LogisticRegression(random_state = seed, max_iter = 500), 
+                                                                param_grid = param_grid, scoring = &#39;f1&#39;, cv = 5)
+
+# Entrainement de l&#39;algorithme
+
+logreg_model = grid_logreg_class.fit(train_features, train_labels)
+
+# Meilleur score et meilleur hyperparamètre
+
+print(round(logreg_model.best_score_,3))
+
+print(logreg_model.best_estimator_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.775
+LogisticRegression(C=1, max_iter=500, random_state=123)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fonction d&#39;évaluation de la performance d&#39;un modèle
+
+def model_evaluation(model, features, labels):
+    pred = model.predict(features)
+    print(classification_report(labels, pred))
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_evaluation(logreg_model, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.90      0.75      0.82      1032
+           1       0.53      0.78      0.63       374
+
+    accuracy                           0.75      1406
+   macro avg       0.71      0.76      0.72      1406
+weighted avg       0.80      0.75      0.77      1406
+</pre></div>
+</div>
+</div>
+</div>
+<p>Appliquons l’algorithme <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html">Recursive Feature Eliminator</a> (RFE) sur le modèle afin de voir s’il garde les mêmes performances lorsqu’on réduit le nombre de prédicteurs. En effet, plus le modèle est complexe, plus il est difficile de l’interpréter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Création de la fonction de construction d&#39;un modèle avec utilisation de l&#39;algorithme RFE
+
+def model_with_rfe(model):
+    rfe_model = RFE(estimator = model, verbose = 0)
+    rfe_model.fit(train_features, train_labels)
+    mask = rfe_model.support_
+    reduced_X = train_features.loc[:,mask]
+    print(reduced_X.columns)
+    return rfe_model
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># LogisticRegression RFE
+
+rfe_logreg_model = model_with_rfe(logreg_model.best_estimator_)
+rfe_logreg_model
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;TotalCharges&#39;, &#39;tenure&#39;, &#39;MonthlyCharges&#39;, &#39;Contract_Two year&#39;,
+       &#39;InternetService_Fiber optic&#39;, &#39;PaymentMethod_Electronic check&#39;,
+       &#39;Contract_One year&#39;, &#39;PaperlessBilling&#39;, &#39;TechSupport_Yes&#39;,
+       &#39;OnlineSecurity_Yes&#39;, &#39;StreamingTV_Yes&#39;, &#39;InternetService_No&#39;,
+       &#39;PhoneService&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RFE(estimator=LogisticRegression(C=1, max_iter=500, random_state=123))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Evaluation du modèle de régression logistique avec RFE
+
+model_evaluation(rfe_logreg_model, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.90      0.75      0.82      1032
+           1       0.53      0.78      0.63       374
+
+    accuracy                           0.75      1406
+   macro avg       0.71      0.76      0.72      1406
+weighted avg       0.80      0.75      0.77      1406
+</pre></div>
+</div>
+</div>
+</div>
+<p>Après réduction des variables, le modèle ne s’est pas amélioré.</p>
+<p><a name="MFA"></a>
+<a class="reference external" href="#MFA">Modèle de Forêt Aléatoire</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Dictionnaire des hyperparamètres
+
+param_grid_rf = {&#39;n_estimators&#39;:[10, 50, 100, 500, 1000],
+                 &#39;max_depth&#39;:[3, 5, 10, 20, None]}
+
+# Object GridSearchCV
+
+grid_rf_class = GridSearchCV(estimator = RandomForestClassifier(random_state = seed), 
+                                                                param_grid = param_grid_rf, scoring = &#39;f1&#39;, cv = 5)
+
+# Entrainement de l&#39;algorithme
+
+rf_model = grid_rf_class.fit(train_features, train_labels)
+
+# Meilleur score et meilleur hyperparamètre
+
+print(round(rf_model.best_score_,3))
+
+print(rf_model.best_estimator_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.909
+RandomForestClassifier(max_depth=20, n_estimators=1000, random_state=123)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_evaluation(rf_model.best_estimator_, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.85      0.86      0.86      1032
+           1       0.60      0.60      0.60       374
+
+    accuracy                           0.79      1406
+   macro avg       0.73      0.73      0.73      1406
+weighted avg       0.79      0.79      0.79      1406
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># RandomForest RFE
+
+rfe_forest_model = model_with_rfe(rf_model.best_estimator_)
+rfe_forest_model
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;TotalCharges&#39;, &#39;tenure&#39;, &#39;MonthlyCharges&#39;, &#39;Contract_Two year&#39;,
+       &#39;InternetService_Fiber optic&#39;, &#39;PaymentMethod_Electronic check&#39;,
+       &#39;Contract_One year&#39;, &#39;PaperlessBilling&#39;, &#39;TechSupport_Yes&#39;,
+       &#39;OnlineSecurity_Yes&#39;, &#39;Partner&#39;, &#39;OnlineBackup_Yes&#39;,
+       &#39;OnlineSecurity_No internet service&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RFE(estimator=RandomForestClassifier(max_depth=20, n_estimators=1000,
+                                     random_state=123))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_evaluation(rfe_forest_model, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.85      0.85      0.85      1032
+           1       0.58      0.60      0.59       374
+
+    accuracy                           0.78      1406
+   macro avg       0.72      0.72      0.72      1406
+weighted avg       0.78      0.78      0.78      1406
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name="CPM"></a>
+<a class="reference external" href="#CPM">Classificateur Perceptron Multicouche</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp = MLPClassifier(random_state = seed, max_iter = 1000)
+
+parameters = {&#39;hidden_layer_sizes&#39;:[(50,), (100,), (200,)],
+              #&#39;activation&#39;:[&#39;identity&#39;,&#39;logistic&#39;, &#39;tanh&#39;, &#39;relu&#39;],
+              &#39;learning_rate&#39;:[&#39;constant&#39;, &#39;invscaling&#39;, &#39;adaptive&#39;]}
+
+mlp_cv = GridSearchCV(mlp, parameters, scoring = &#39;f1&#39;, cv = 5, n_jobs=-1)
+
+mlp_cv.fit(train_features, train_labels)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=5, estimator=MLPClassifier(max_iter=1000, random_state=123),
+             n_jobs=-1,
+             param_grid={&#39;hidden_layer_sizes&#39;: [(50,), (100,), (200,)],
+                         &#39;learning_rate&#39;: [&#39;constant&#39;, &#39;invscaling&#39;,
+                                           &#39;adaptive&#39;]},
+             scoring=&#39;f1&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>round(mlp_cv.best_score_, 3)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.856
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mlp_cv.best_estimator_
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MLPClassifier(hidden_layer_sizes=(200,), max_iter=1000, random_state=123)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_evaluation(mlp_cv.best_estimator_, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.85      0.81      0.83      1032
+           1       0.54      0.61      0.58       374
+
+    accuracy                           0.76      1406
+   macro avg       0.70      0.71      0.70      1406
+weighted avg       0.77      0.76      0.76      1406
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name="SVM"></a>
+<a class="reference external" href="#SVM">Support Vector Machine</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>svm_model = SVC(random_state = seed)
+
+svm_hyp = {&#39;kernel&#39;:[&#39;linear&#39;, &#39;rbf&#39;],
+          &#39;C&#39;:[0.1, 1.0, 10, 50, 100]}
+
+svm_cv = GridSearchCV(svm_model, svm_hyp, scoring=&#39;f1&#39;, cv =5)
+
+svm_cv.fit(train_features, train_labels)
+
+print(round(svm_cv.best_score_, 3))
+print(svm_cv.best_estimator_)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.855
+SVC(C=100, random_state=123)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model_evaluation(svm_cv.best_estimator_, X_val, y_val)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.86      0.76      0.80      1032
+           1       0.49      0.65      0.56       374
+
+    accuracy                           0.73      1406
+   macro avg       0.68      0.70      0.68      1406
+weighted avg       0.76      0.73      0.74      1406
+</pre></div>
+</div>
+</div>
+</div>
+<p><a name="Concl"></a>
+<a class="reference external" href="#Concl">Conclusion</a></p>
+<p>Nous avons utilisé les données, d’évaluation pour sélectionner le meilleur modèle.</p>
+<p>Evaluons le meilleur modèle sur les données de test afin d’apprécier sa performance sur de nouvelles données</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Performance du meilleur modèle sur les données de test
+
+model_evaluation(logreg_model.best_estimator_, X_test, y_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.91      0.77      0.83      1033
+           1       0.55      0.78      0.64       374
+
+    accuracy                           0.77      1407
+   macro avg       0.73      0.77      0.74      1407
+weighted avg       0.81      0.77      0.78      1407
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="image" src="_images/marketing-direct.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fin du projet
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>Analyse des données du jeu de donnnées des voitures d’occasion   </strong></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture03.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Projet : Manipulationn de Base de données NoSQL</strong></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Roland MONDJEHI<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

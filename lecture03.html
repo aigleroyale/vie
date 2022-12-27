@@ -1,0 +1,3075 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Projet : Manipulationn de Base de données NoSQL &#8212; Data Scientist</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ANALYSE CREDIT-RISQUE-MODELISATION AVEC R" href="lecture04.html" />
+    <link rel="prev" title="Projet Complet de Data Science" href="lecture02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Scientist</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture01.html">
+   <strong>
+    Analyse des données du jeu de donnnées des voitures d’occasion
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture02.html">
+   <strong>
+    Projet Complet de Data Science
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture04.html">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/aigleroyale/portline/blob/main/lecture03.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aigleroyale/portline"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lecture03.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#table-des-matieres">
+     Table des Matières
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     <strong>
+      Introduction
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongodb">
+     <strong>
+      MongoDB
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#les-operations-crud">
+       Les opérations CRUD
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#create">
+         CREATE
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#read">
+         READ
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#update">
+         UPDATE
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#delete">
+         DELETE
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h5 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#mongodb-stocke-des-types-de-donnees-specifiques">
+           <strong>
+            MongoDB stocke des types de données spécifiques
+           </strong>
+          </a>
+          <ul class="nav section-nav flex-column">
+           <li class="toc-h6 nav-item toc-entry">
+            <a class="reference internal nav-link" href="#une-image">
+             Une image
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mini-projet-scrapper-et-stocker-dans-mongodb-beautifulsoup-et-pymongo">
+       Mini-projet : Scrapper et stocker dans mongoDB (
+       <strong>
+        BeautifulSoup
+       </strong>
+       et
+       <strong>
+        Pymongo
+       </strong>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mini-projet-2-une-etude-de-cas-sur-la-mortalite-aux-etats-unis">
+       Mini-projet_2 : Une étude de cas sur la mortalité aux États-Unis
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagramme-du-modele-er">
+     Diagramme du modèle ER
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apercu-de-l-analyse-des-donnees">
+     Aperçu de l’analyse des données
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importation-des-donnees">
+     Importation des données
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-des-differentes-collection">
+     Création des différentes collection
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-categorielle-des-causes-de-deces">
+     Analyse catégorielle des causes de décès
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evolution-du-taux-de-mortalite-corrige-de-l-age-du-cancer-et-des-maladies-cardiaques-au-fil-du-temps">
+     Évolution du taux de mortalité corrigé de l’âge du cancer et des maladies cardiaques au fil du temps
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-generalisee-de-la-mortalite-par-localisation">
+     Analyse généralisée de la mortalité par localisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nombre-moyen-de-deces-de-personnes-agees-par-etat">
+     Nombre moyen de décès de personnes âgées par État
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion">
+     <strong>
+      Conclusion
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#travaux-futurs">
+     <strong>
+      Travaux futurs
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#de-meme-sur-neo4j-redis">
+     De même sur
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Neo4J,
+      </span>
+      <span class="pre">
+       Redis
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fin-du-projet">
+   Fin du projet
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Projet : Manipulationn de Base de données NoSQL</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#table-des-matieres">
+     Table des Matières
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     <strong>
+      Introduction
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mongodb">
+     <strong>
+      MongoDB
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#les-operations-crud">
+       Les opérations CRUD
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#create">
+         CREATE
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#read">
+         READ
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#update">
+         UPDATE
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#delete">
+         DELETE
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h5 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#mongodb-stocke-des-types-de-donnees-specifiques">
+           <strong>
+            MongoDB stocke des types de données spécifiques
+           </strong>
+          </a>
+          <ul class="nav section-nav flex-column">
+           <li class="toc-h6 nav-item toc-entry">
+            <a class="reference internal nav-link" href="#une-image">
+             Une image
+            </a>
+           </li>
+          </ul>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mini-projet-scrapper-et-stocker-dans-mongodb-beautifulsoup-et-pymongo">
+       Mini-projet : Scrapper et stocker dans mongoDB (
+       <strong>
+        BeautifulSoup
+       </strong>
+       et
+       <strong>
+        Pymongo
+       </strong>
+       )
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mini-projet-2-une-etude-de-cas-sur-la-mortalite-aux-etats-unis">
+       Mini-projet_2 : Une étude de cas sur la mortalité aux États-Unis
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagramme-du-modele-er">
+     Diagramme du modèle ER
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apercu-de-l-analyse-des-donnees">
+     Aperçu de l’analyse des données
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importation-des-donnees">
+     Importation des données
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-des-differentes-collection">
+     Création des différentes collection
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-categorielle-des-causes-de-deces">
+     Analyse catégorielle des causes de décès
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evolution-du-taux-de-mortalite-corrige-de-l-age-du-cancer-et-des-maladies-cardiaques-au-fil-du-temps">
+     Évolution du taux de mortalité corrigé de l’âge du cancer et des maladies cardiaques au fil du temps
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analyse-generalisee-de-la-mortalite-par-localisation">
+     Analyse généralisée de la mortalité par localisation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nombre-moyen-de-deces-de-personnes-agees-par-etat">
+     Nombre moyen de décès de personnes âgées par État
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion">
+     <strong>
+      Conclusion
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#travaux-futurs">
+     <strong>
+      Travaux futurs
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#de-meme-sur-neo4j-redis">
+     De même sur
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Neo4J,
+      </span>
+      <span class="pre">
+       Redis
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fin-du-projet">
+   Fin du projet
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="projet-manipulationn-de-base-de-donnees-nosql">
+<h1><strong>Projet : Manipulationn de Base de données NoSQL</strong><a class="headerlink" href="#projet-manipulationn-de-base-de-donnees-nosql" title="Permalink to this headline">#</a></h1>
+<section id="table-des-matieres">
+<h2>Table des Matières<a class="headerlink" href="#table-des-matieres" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#Intro">Introduction</a></p></li>
+<li><p><a class="reference external" href="#mongo">MongoDB</a></p></li>
+<li><p><a class="reference external" href="#Concl">Conclusion</a></p></li>
+</ul>
+<p><a name="Intro"></a></p>
+</section>
+<section id="introduction">
+<h2><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Du fait du contexte <strong>Big Data</strong>, les bases de données <strong>NoSQL</strong> peuvent enregistrer et traiter sans problème de gros volumes de données.</p>
+<p><strong>NoSQL</strong> est aussi un complément utile des bases de données <strong>SQL</strong> relationnelles traditionnelles.</p>
+<p><img alt="imag" src="_images/DB_piechart.png" /></p>
+<p>Il existe plusieurs types de bases de données <strong>NoSQL</strong>.</p>
+<p>Les plus populaires sont présentés ci-dessous :</p>
+<ul class="simple">
+<li><p>Orienté <strong>clés-valeurs</strong> #1 <a class="reference external" href="https://redis.io/">Redis</a></p></li>
+<li><p>Orienté <strong>documents</strong> #1 <a class="reference external" href="https://www.mongodb.com/">MongoDB</a></p></li>
+<li><p>Orienté <strong>larges colonnes</strong> #1 <a class="reference external" href="https://cassandra.apache.org/_/index.html">Cassandra</a></p></li>
+<li><p>Orienté <strong>graphes</strong> #1 <a class="reference external" href="https://neo4j.com/fr/">Neo4j</a></p></li>
+</ul>
+<p>Pour plus d’infos sur <strong>NoSQL</strong>, <a class="reference external" href="https://www.ksi.mff.cuni.cz/~svoboda/courses/2016-2-MIE-PDB/lectures/Lecture-06-NoSQL.pdf">DSE FMP CU</a> et <a class="reference external" href="https://db-engines.com/en/ranking">db-engines</a></p>
+<p><a name="mongo"></a></p>
+</section>
+<section id="mongodb">
+<h2><strong>MongoDB</strong><a class="headerlink" href="#mongodb" title="Permalink to this headline">#</a></h2>
+<p>MongoDB est une base de données orientée documents, connues sous le nom de données semi-structurées..</p>
+<p><img alt="imag" src="_images/mongo.jpg" /></p>
+<section id="les-operations-crud">
+<h3>Les opérations CRUD<a class="headerlink" href="#les-operations-crud" title="Permalink to this headline">#</a></h3>
+<section id="create">
+<h4>CREATE<a class="headerlink" href="#create" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Importation de la libraires
+import pymongo
+
+# La connexion est ouverte au port 27017
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+
+# creation de la base de données &quot;projet&quot;
+mydb = client[&quot;projet&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;example1&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Insertion de données dans mongoDB
+
+exemple = {  &quot;nom&quot; : &quot;MONDJEHI&quot;,
+             &quot;prenom&quot; : &quot;ROLAND&quot;,
+             &quot;age&quot; : 25,
+             &quot;email&quot; : &quot;mondrolan@gmail.com&quot;}
+
+collection.insert_one(exemple)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertOneResult at 0x1c1623dcf70&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Inserer plusieurs données
+
+exemples = [{  &quot;nom&quot; : &quot;MONDJEHI&quot;,
+             &quot;prenom&quot; : &quot;Jean Marie&quot;,
+             &quot;age&quot; : 30,
+             &quot;email&quot; : &quot;mondjehijeanmarie@gmail.com&quot;},
+            
+              {  &quot;nom&quot; : &quot;MONDJEHI&quot;,
+             &quot;prenom&quot; : &quot;Wilfred&quot;,
+             &quot;age&quot; : 26,
+             &quot;email&quot; : &quot;mondjehiwilfred@gmail.com&quot;}]
+
+collection.insert_many(exemples)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x1c16228d280&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read">
+<h4>READ<a class="headerlink" href="#read" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Obtenir la liste des collections
+
+print(mydb.list_collection_names())
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;example1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># obtenir un document
+
+doc = collection.find_one()
+print(doc)
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a64ad78320cb5b2a745ad1&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;ROLAND&#39;, &#39;age&#39;: 25, &#39;email&#39;: &#39;mondrolan@gmail.com&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Obtenir un document spécifique
+
+doc = collection.find_one({&quot;prenom&quot;:&quot;Wilfred&quot;})
+print(doc)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a64c358320cb5b2a745ad3&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;Wilfred&#39;, &#39;age&#39;: 26, &#39;email&#39;: &#39;mondjehiwilfred@gmail.com&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Obtenir tous les documents
+
+docs = collection.find()
+
+for doc in docs:
+    print(doc)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a64ad78320cb5b2a745ad1&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;ROLAND&#39;, &#39;age&#39;: 25, &#39;email&#39;: &#39;mondrolan@gmail.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;63a64c358320cb5b2a745ad2&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;Jean Marie&#39;, &#39;age&#39;: 30, &#39;email&#39;: &#39;mondjehijeanmarie@gmail.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;63a64c358320cb5b2a745ad3&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;Wilfred&#39;, &#39;age&#39;: 26, &#39;email&#39;: &#39;mondjehiwilfred@gmail.com&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="update">
+<h4>UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">#</a></h4>
+<p>3 méthodes  <em>update_one()</em>, <em>update_many()</em> , <em>find_one_and_update()</em></p>
+<p>Mise à jour du prenom <code class="docutils literal notranslate"><span class="pre">Wilfred</span></code> à <code class="docutils literal notranslate"><span class="pre">WILFRED</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>collection.update_one({&quot;prenom&quot;: &quot;Wilfred&quot;},
+                      {&#39;$set&#39;: {
+                          &#39;prenom&#39;: &quot;WILFRED&quot;
+                          }
+                      }, upsert=False)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.UpdateResult at 0x1c1623e6430&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>docs = collection.find()
+
+for doc in docs:
+    print(doc)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a64ad78320cb5b2a745ad1&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;ROLAND&#39;, &#39;age&#39;: 25, &#39;email&#39;: &#39;mondrolan@gmail.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;63a64c358320cb5b2a745ad2&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;Jean Marie&#39;, &#39;age&#39;: 30, &#39;email&#39;: &#39;mondjehijeanmarie@gmail.com&#39;}
+{&#39;_id&#39;: ObjectId(&#39;63a64c358320cb5b2a745ad3&#39;), &#39;nom&#39;: &#39;MONDJEHI&#39;, &#39;prenom&#39;: &#39;WILFRED&#39;, &#39;age&#39;: 26, &#39;email&#39;: &#39;mondjehiwilfred@gmail.com&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="delete">
+<h4>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># print number of document with the key x = 4
+
+print(&quot;Nombre de documents avant suppression : &quot;, collection.count_documents({&#39;nom&#39;: &#39;MONDJEHI&#39;}))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nombre de documents avant suppression :  3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Supprimer le document dont le prenom est WILFRED
+
+collection.delete_one({&#39;prenom&#39;: &#39;WILFRED&#39;})
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.DeleteResult at 0x1c161788970&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Nombre de documents après suppression : &quot;, collection.count_documents({&#39;nom&#39;: &#39;MONDJEHI&#39;}))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nombre de documents après suppression :  2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mongodb-stocke-des-types-de-donnees-specifiques">
+<h5><strong>MongoDB stocke des types de données spécifiques</strong><a class="headerlink" href="#mongodb-stocke-des-types-de-donnees-specifiques" title="Permalink to this headline">#</a></h5>
+<section id="une-image">
+<h6>Une image<a class="headerlink" href="#une-image" title="Permalink to this headline">#</a></h6>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from PIL import Image
+from matplotlib import pyplot
+
+image = Image.open(&#39;images/FSEG.jpg&#39;)
+pyplot.imshow(image)
+pyplot.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_22_0.png" src="_images/lecture03_22_0.png" />
+</div>
+</div>
+<p>Essayons de stocker cette image dans mongoDB</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Maintenant que l&#39;image est chargée, nous devons la convertir en un tableau numpy
+import numpy as np
+from bson.binary import Binary
+import pickle
+import pymongo
+
+# Conversion en numpy
+data = np.asarray(image)
+
+# Affichier les dimensions
+print(data.shape)
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(212, 847, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#
+post = {}
+
+# pickle dump le tableau numpy et ensuite le binarise (rappel MongoDB = Bson = Bytes json)
+post[&#39;image&#39;] = Binary( pickle.dumps( data, protocol=2) ) 
+
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+mydb = client[&quot;projet&quot;]
+collection = mydb[&quot;image&quot;]
+
+collection.insert_one(post)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertOneResult at 0x1c164e80250&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rechargement de l’image</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+mydb = client[&quot;projet&quot;]
+collection = mydb[&quot;image&quot;]
+docs = collection.find()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Charger l&#39;objet binaire
+doc =  pickle.loads(next(docs)[&quot;image&quot;])
+
+print(doc.shape,type(doc))
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(212, 847, 3) &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># De numpy à image
+image = Image.fromarray(doc)
+
+# Plot l&#39;image
+pyplot.imshow(image)
+pyplot.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_29_0.png" src="_images/lecture03_29_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+# Charger l&#39;objet binaire
+doc =  pickle.loads(next(docs)[&quot;image&quot;])
+
+print(doc.shape,type(doc))
+
+# From numpy to img
+image = Image.fromarray(doc)
+# Show image
+pyplot.imshow(image)
+pyplot.show()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="mini-projet-scrapper-et-stocker-dans-mongodb-beautifulsoup-et-pymongo">
+<h3>Mini-projet : Scrapper et stocker dans mongoDB ( <strong>BeautifulSoup</strong> et <strong>Pymongo</strong>)<a class="headerlink" href="#mini-projet-scrapper-et-stocker-dans-mongodb-beautifulsoup-et-pymongo" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import requests 
+from bs4 import BeautifulSoup
+import re
+import tqdm.notebook as tq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Utilisation d&#39;un exemple
+# A partir de la page wikipedia de Kevin Bacon
+starting_url = &quot;https://en.wikipedia.org/wiki/Kevin_Bacon&quot;
+
+# Obtenir le contenu html
+response = requests.get(starting_url)
+result = response.content
+
+# Analyser le html avec BS
+soup = BeautifulSoup(result, &#39;html.parser&#39;)
+
+# Dans le corps du texte, trouvez tous les href qui correspondent à la requête regex
+# (commencez par wiki et ignorez ! : pour éviter les artefacts comme les jpeg)
+list_b = []
+for link in soup.find(&quot;div&quot;,attrs={&#39;id&#39;:&#39;bodyContent&#39;}).find_all(&quot;a&quot;,href = re.compile(&quot;^(/wiki/)((?!:).)*$&quot;)):
+    list_b.append(link.get(&quot;href&quot;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(len(list_b))
+print(list_b[0:5])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>428
+[&#39;/wiki/Kevin_Bacon_(disambiguation)&#39;, &#39;/wiki/Philadelphia&#39;, &#39;/wiki/Kevin_Bacon_filmography&#39;, &#39;/wiki/Kyra_Sedgwick&#39;, &#39;/wiki/Sosie_Bacon&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Un pas de plus, nous voulons traiter le texte et le sauvegarder dans MongoDB.
+
+import pymongo 
+
+class crawler:
+    def __init__(self,starting_url, depth, mongo_uri, db_name, collection_name ):
+        self.starting_url = starting_url
+        self.depth = depth
+        self.mongo_uri = mongo_uri
+        self.db_name = db_name
+        self.collection_name = collection_name
+        self.hrefs_checked = []
+        self.n_processed = 0
+        
+    def Get_hrefs(self,url):
+
+        hrefs = []
+        for link in self.soup.find(&quot;div&quot;,attrs={&#39;id&#39;:&#39;bodyContent&#39;}).find_all(&quot;a&quot;,href = re.compile(&quot;^(/wiki/)((?!:).)*$&quot;)):
+            if &quot;href&quot; in link.attrs:
+                if link.get(&quot;href&quot;) not in hrefs:
+                    hrefs.append(link.get(&quot;href&quot;))
+        return(hrefs)
+    
+    def parse_url(self): 
+        full_text = &quot;&quot;
+        for para in self.soup.find_all(&quot;p&quot;):
+            full_text += para.text + &quot; &quot;
+        return(full_text)
+    
+    def save2mongo(self):
+        Client = pymongo.MongoClient(self.mongo_uri)
+        db = Client[self.db_name]
+        collection = db[self.collection_name]
+        
+        collection.insert_many(self.list_of_insertion)
+        
+    def run_analysis(self):
+        
+        self.list_of_insertion = []
+        
+        for i in tq.tqdm(range(self.depth)):
+            # Première itération pour Kevin Bacon
+            if i == 0:
+                response = requests.get(self.starting_url)
+                result = response.content    
+                self.soup = BeautifulSoup(result, &#39;html.parser&#39;)
+                hrefs = self.Get_hrefs(self.starting_url)
+                text = self.parse_url()
+                self.hrefs_checked.append(self.starting_url)
+                self.n_processed += 1
+                self.list_of_insertion.append({&quot;id&quot;:self.n_processed, &quot;text&quot; : text, &quot;href&quot;:self.starting_url})
+            else:
+                hrefs_temp = []
+                for starting_url in tq.tqdm(hrefs):
+                    url = &quot;https://en.wikipedia.org&quot; + starting_url
+                    response = requests.get(url)
+                    result = response.content    
+                    self.soup = BeautifulSoup(result, &#39;html.parser&#39;)
+                    hrefs_temp += self.Get_hrefs(url)
+                    text = self.parse_url()
+                    self.n_processed += 1
+                    self.list_of_insertion.append({&quot;id&quot;:self.n_processed, &quot;text&quot; : text, &quot;href&quot;:url})
+                    if len(self.list_of_insertion) % 200 == 0:
+                        self.save2mongo()
+                        self.list_of_insertion = []
+                hrefs = [href for href in hrefs_temp if href not in hrefs_checked]      
+        self.save2mongo()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>crawl = crawler(starting_url=&quot;https://en.wikipedia.org/wiki/Kevin_Bacon&quot;, 
+                depth = 1, 
+                mongo_uri = &#39;mongodb://localhost:27017&#39;, 
+                db_name = &quot;Mini_Project&quot;, collection_name=&quot;KB&quot;)
+crawl.run_analysis()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "60d9da98fea949bd8c47ffe2ae1d5ab2", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pymongo
+
+client = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)
+
+for db in client.list_databases():
+    print(db)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;Mini_Project&#39;, &#39;sizeOnDisk&#39;: 4227072, &#39;empty&#39;: False}
+{&#39;name&#39;: &#39;admin&#39;, &#39;sizeOnDisk&#39;: 40960, &#39;empty&#39;: False}
+{&#39;name&#39;: &#39;config&#39;, &#39;sizeOnDisk&#39;: 110592, &#39;empty&#39;: False}
+{&#39;name&#39;: &#39;local&#39;, &#39;sizeOnDisk&#39;: 40960, &#39;empty&#39;: False}
+{&#39;name&#39;: &#39;projet&#39;, &#39;sizeOnDisk&#39;: 315392, &#39;empty&#39;: False}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>client = pymongo.MongoClient(&quot;mongodb://localhost:27017/&quot;)
+mydb = client[&#39;Mini_Project&#39;]
+
+print(&quot;Liste des collections\n--------------------&quot;)
+for coll in mydb.list_collection_names():
+    print(coll)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Liste des collections
+--------------------
+KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>collection = mydb[&quot;KB&quot;]
+doc = collection.find_one()
+doc
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a65cca8320cb5b2a745ad8&#39;),
+ &#39;id&#39;: 1,
+ &#39;text&#39;: &#39;\n Kevin Norwood Bacon[2] (born July 8, 1958)[3] is an American actor. His films include the musical-drama film Footloose (1984), the controversial historical conspiracy legal thriller JFK (1991), the legal drama A Few Good Men (1992), the historical docudrama Apollo 13 (1995), and the mystery drama Mystic River (2003). Bacon is also known for voicing the title character in Balto (1995), and has taken on darker roles, such as that of a sadistic guard in Sleepers (1996), and troubled former child abuser in The Woodsman (2004). He is further known for the hit comedies National Lampoon\&#39;s Animal House (1978), Diner (1982), Tremors (1990) and Crazy, Stupid, Love (2011). His other well-known films are Friday the 13th (1980), Flatliners (1990), The River Wild (1994), Wild Things (1998), Stir of Echoes (1999), Hollow Man (2000), Frost/Nixon (2008), X-Men: First Class (2011), Black Mass (2015) and Patriots Day (2016). He is equally prolific on television, having starred in the Fox drama series The Following (2013–2015). For the HBO original film Taking Chance (2009), Bacon won a Golden Globe Award and a Screen Actors Guild Award, also receiving a Primetime Emmy Award nomination. More recently, Bacon portrayed the title character, and was the series lead, of the Amazon Prime television series I Love Dick, for which he was nominated for a Golden Globe Award.\n The Guardian named him one of the best actors never to have received an Academy Award nomination.[4] In 2003, Bacon received a star on the Hollywood Walk of Fame for his contributions to the motion picture industry.[5]\n Bacon has become associated with the concept of interconnectedness among people, having been popularized by the game &quot;Six Degrees of Kevin Bacon&quot;. In 2007, he created SixDegrees.org, a charitable foundation.[6] He is a brand ambassador for British mobile network operator EE and has been featured in several ads for the company.\n Bacon, the youngest of six children, was born and raised in a close-knit family in Philadelphia.[3] His mother, Ruth Hilda (née Holmes; 1916–1991), taught at an elementary school and was a liberal activist,[3] while his father, Edmund Bacon (1910–2005), was an urban planner who served for many years as executive director of the Philadelphia City Planning Commission and authored the seminal text Design of Cities.[7]\n Bacon attended Julia R. Masterman High School for both middle and high school.[8] At age 16, in 1975, Bacon won a full scholarship to and attended the Pennsylvania Governor\&#39;s School for the Arts at Bucknell University,[9] a state-funded five-week arts program at which he studied theater under Glory Van Scott. The experience solidified Bacon\&#39;s passion for the arts.[6][7]\n Bacon left home at age 17 to pursue a theater career in New York City, where he appeared in a production at the Circle in the Square Theater School. &quot;I wanted life, man, the real thing&quot;, he later recalled to Nancy Mills of Cosmopolitan. &quot;The message I got was \&#39;The arts are it. Business is the devil\&#39;s work. Art and creative expression are next to godliness.\&#39; Combine that with an immense ego and you wind up with an actor.&quot;[10]\nBacon\&#39;s debut in the fraternity comedy National Lampoon\&#39;s Animal House (1978) did not lead to the fame he had sought, and Bacon returned to waiting tables and auditioning for small roles in theater.[7] He briefly worked on the television soap operas Search for Tomorrow (1979) and Guiding Light (1980–81) in New York.\n In 1980, he appeared in the slasher film Friday the 13th.[11] Some of his early stage work included Getting Out, performed at New York\&#39;s Phoenix Theater, and Flux, at Second Stage Theatre during their 1981–1982 season.[12]\n In 1982, he won an Obie Award for his role in Forty Deuce,[13] and soon afterward he made his Broadway debut in Slab Boys, with then-unknowns Sean Penn and Val Kilmer. However, it was not until he portrayed Timothy Fenwick that same year in Barry Levinson\&#39;s film Diner\xa0– costarring Steve Guttenberg, Daniel Stern, Mickey Rourke, Tim Daly, and Ellen Barkin\xa0– that he made an indelible impression on film critics and moviegoers alike.[14]\n Bolstered by the attention garnered by his performance in Diner, Bacon starred in Footloose (1984).[12] Richard Corliss of TIME likened Footloose to the James Dean classic Rebel Without a Cause and the old Mickey Rooney/Judy Garland musicals, commenting that the film includes &quot;motifs on book burning, mid-life crisis, AWOL parents, fatal car crashes, drug enforcement, and Bible Belt vigilantism.&quot;[15] To prepare for the role, Bacon enrolled at a high school as a transfer student named &quot;Ren McCormick&quot; and studied teenagers before leaving in the middle of the day.[7][16] Bacon earned strong reviews for Footloose.[17] \nBacon\&#39;s critical and box office success led to a period of typecasting in roles similar to the two he portrayed in Diner and Footloose, and he had difficulty shaking this on-screen image. For the next several years he chose films that cast him against either type and experienced, by his own estimation, a career slump.\n After a cameo in John Hughes\&#39;s 1987 comedy Planes, Trains and Automobiles,[18] Bacon starred in John Hughes\&#39;s 1988 comedy She\&#39;s Having a Baby,[12] and the following year he was in another comedy called The Big Picture.[19]\n In 1990, Bacon had two successful roles. He played a character who saved his town from under-the-earth &quot;graboid&quot; monsters in the comedy/horror film Tremors,[20] and he portrayed an earnest medical student experimenting with death in Joel Schumacher\&#39;s Flatliners.[12]\n In Bacon\&#39;s next project he starred opposite Elizabeth Perkins in He Said, She Said. Despite lukewarm reviews and low audience turnout, He Said, She Said was illuminating for Bacon. Required to play a character with sexist attitudes, he admitted that the role was not that large a stretch for him.[12]\n By 1991, Bacon began to give up the idea of playing leading men in big-budget films and to remake himself as a character actor. &quot;The only way I was going to be able to work on \&#39;A\&#39; projects with really \&#39;A\&#39; directors was if I wasn\&#39;t the guy who was starring&quot;, he confided to The New York Times writer Trip Gabriel. &quot;You can\&#39;t afford to set up a $40\xa0million movie if you don\&#39;t have your star.&quot;[21] He performed that year as gay prostitute Willie O\&#39;Keefe in Oliver Stone\&#39;s JFK[22] and went on to play a prosecuting attorney in the military courtroom drama A Few Good Men.[23] Later that year he returned to the theater to play in Spike Heels, directed by Michael Greif.[12]\n In 1994, Bacon earned a Golden Globe nomination for his role in The River Wild,[12] opposite Meryl Streep. He described the film to Chase in Cosmopolitan as a &quot;grueling shoot&quot;, in which &quot;every one of us fell out of the boat at one point or another and had to be saved&quot;.\n His next film, Murder in the First, earned him the Broadcast Film Critic\&#39;s Association Award in 1995,[12] the same year that he starred in the blockbuster hit Apollo 13.[24] Bacon played a trademark dark role once again in Sleepers (1996).[25] This part starkly contrasted with his appearance in the lighthearted romantic comedy, Picture Perfect (1997).[12]\n Bacon made his debut as a director with the television film Losing Chase (1996), which was nominated for three Golden Globe Awards, and won one.[26] Bacon again resurrected his oddball mystique that year as a mentally-challenged houseguest in Digging to China[12] and as a disc jockey corrupted by payola in Telling Lies in America.[12] As the executive producer of Wild Things (1998), Bacon reserved a supporting role for himself and went on to star in Stir of Echoes (1999), directed by David Koepp.[27]\n In 2000, he appeared in Paul Verhoeven\&#39;s Hollow Man.[28] Bacon, Colin Firth and Rachel Blanchard depict a ménage à trois in their film, Where the Truth Lies.[29] Bacon and director Atom Egoyan have condemned the MPAA ratings board decision to rate the film &quot;NC-17&quot; rather than the preferable &quot;R&quot;. Bacon commented: &quot;I don\&#39;t get it, when I see films (that) are extremely violent, extremely objectionable sometimes in terms of the roles that women play, slide by with an R, no problem, because the people happen to have more of their clothes on.&quot;[30]\n In 2003 he acted with Sean Penn and Tim Robbins in Clint Eastwood\&#39;s movie Mystic River.\n Bacon was again acclaimed for a dark starring role playing an offending pedophile on parole in The Woodsman (2004), for which he was nominated for best actor and received the Independent Spirit Award.[31] He appeared in the HBO Films production of Taking Chance, based on an eponymous story written by Lieutenant Colonel Michael Strobl, an American Desert Storm war veteran.[32] The film premiered on HBO on February 21, 2009. Bacon won a Golden Globe Award and a Screen Actors Guild Award for Outstanding Performance by a Male Actor in a Miniseries or Television Movie for his role.\n On July 15, 2010, it was confirmed that Bacon would appear in Matthew Vaughn\&#39;s X-Men: First Class as mutant villain Sebastian Shaw. [33][34]\n In March 2012, Bacon was featured in a performance of Dustin Lance Black\&#39;s play, 8 – a staged reenactment of the federal trial that overturned California\&#39;s Prop 8 ban on same-sex marriage – as Attorney Charles J. Cooper.[35] The production was held at the Wilshire Ebell Theatre and broadcast on YouTube to raise money for the American Foundation for Equal Rights.[36][37]\n From 2013 to 2015, Bacon starred as Ryan Hardy in the FOX television series The Following.[38] In 2013, he won a Saturn Award for Best Actor on Television for that role.[39]\n In 2015, he said in a Huffington Post interview he would like to return to the Tremors franchise.[40] However, Bacon did not appear in Tremors 5: Bloodline (2015).\n Beginning in 2012, Bacon has appeared in a major advertising campaign for the EE mobile network in the United Kingdom, based on the Six Degrees concept and his various film roles.[41][42] In 2015, he became a commercial spokesperson for the U.S. egg industry.[43]\n Bacon is the subject of the trivia game titled &quot;Six Degrees of Kevin Bacon,&quot; based on the idea that, due to his prolific screen career covering a diverse range of genres, any Hollywood actor can be linked to another in a handful of steps based on their association with Bacon. The name of the game derives from the idea of six degrees of separation.\nAlthough he was initially dismayed by the game, the meme stuck, and Bacon eventually embraced it, forming the charitable initiative SixDegrees.org, a social networking service intended to link people and charities to each other.[44]\n The measure of proximity to Bacon has been mathematically formalized as the Bacon number and can be referenced at websites including Oracle of Bacon, which is in turn based upon Internet Movie Database data. In 2012, Google added a feature to their search engine, whereby searching for an actor\&#39;s name followed by the words &quot;Bacon Number&quot; will show the ways in which that actor is connected to Kevin Bacon.[45] This feature is no longer active.\n A similar measurement exists in the mathematics community, where one measures how far one is removed from co-writing a mathematical paper with the prolific and itinerant mathematician Paul Erdős. This is done by means of the Erdős number, which is 0 for Paul Erdős himself, 1 for someone who co-wrote an article with him, 2 for someone who co-wrote with someone who co-wrote with him, etc. People have combined the Bacon number and the Erdős number to form the Erdős–Bacon number, which is the sum of the two.[46]\n In 1995, Kevin formed a band called The Bacon Brothers with his brother, Michael. The duo has released seven albums.[47] Kevin Bacon also sings in a variety of other media; he has serenaded his goats on Instagram,[48] and sings with the band the Old 97\&#39;s in his role as himself in The Guardians of the Galaxy Holiday Special.[49]\n Bacon has been married to actress Kyra Sedgwick since September 4, 1988; they met on the set of the PBS version of Lanford Wilson\&#39;s play Lemon Sky. He has said: &quot;The time I was hitting what I considered to be bottom was also the time I met my wife, our kids were born, good things were happening. And I was able to keep supporting myself; that always gave me strength.&quot;[10] Bacon and Sedgwick have starred together in Pyrates, Murder in the First, The Woodsman, and Loverboy. They have two children, Travis Sedgwick (b. 1989) and Sosie Ruth (b. 1992). They reside on the Upper West Side of Manhattan.[50] Bacon was previously in a five-year relationship with actress Tracy Pollan, in the 1980s.[51]\n Bacon has spoken out for the separation of church and state,[52][53] and told The Times in 2005 that he did not &quot;believe in God.&quot;[54] He has also said that he is not anti-religion.[55]\n Bacon and Sedgwick appeared in will.i.am\&#39;s video &quot;It\&#39;s a New Day&quot;, which was released following Barack Obama\&#39;s 2008 presidential win.\n The pair lost part of their savings in the Ponzi scheme of infamous swindler Bernie Madoff.[56][57]\n Bacon and Sedgwick learned in 2011, via their appearance on the PBS TV show Finding Your Roots with Henry Louis Gates, that they are ninth cousins, once removed.[58] They also appeared in a video[59] promoting the &quot;Bill of Reproductive Rights&quot;, supporting among other things a woman\&#39;s right to choose and have access to birth control.[60]\n &#39;,
+ &#39;href&#39;: &#39;https://en.wikipedia.org/wiki/Kevin_Bacon&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_count = collection.count_documents({})
+print(total_count)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mini-projet-2-une-etude-de-cas-sur-la-mortalite-aux-etats-unis">
+<h3>Mini-projet_2 : Une étude de cas sur la mortalité aux États-Unis<a class="headerlink" href="#mini-projet-2-une-etude-de-cas-sur-la-mortalite-aux-etats-unis" title="Permalink to this headline">#</a></h3>
+<p>Cette étude a pour but d’analyser la mortalité aux États-Unis en fonction des causes et des groupes d’âge.</p>
+<p>Elle vise à répondre à des questions telles que :</p>
+<ul class="simple">
+<li><p>Les principales causes et maladies qui ont tué des Américains au cours des deux dernières décennies</p></li>
+<li><p>L’évolution des taux de mortalité liés à ces causes</p></li>
+<li><p>Les différences géographiques entre ces causes</p></li>
+<li><p>Le nombre de décès dans chaque État Américain par rapport à sa population.</p></li>
+</ul>
+<p><em>Trois jeux de données sont utilisés dans cette étude et importés dans la base de données NoSQL</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">Sources</span> <span class="pre">de</span> <span class="pre">données</span></code></p>
+<ol class="simple">
+<li><p>Principales causes de décès - US CDC National Center for Health Statistics</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference external" href="https://data.cdc.gov/NCHS/NCHS-Leading-Causes-of-Death-United-States/bi63-dtpu">Lien</a></p></li>
+</ul>
+<ol class="simple">
+<li><p>Décès dans 122 villes américaines (1962 - 2016) - Système d’information sur la mortalité dans les villes</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference external" href="https://catalog.data.gov/dataset/deaths-in-122-u-s-cities-1962-2016-122-cities-mortality-reporting-system">Lien</a></p></li>
+</ul>
+<ol class="simple">
+<li><p>Population des États</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fred.stlouisfed.org/release?rid=118&amp;t=state&amp;ob=pv&amp;od=desc">Lien</a></p></li>
+</ul>
+</section>
+</section>
+<section id="diagramme-du-modele-er">
+<h2>Diagramme du modèle ER<a class="headerlink" href="#diagramme-du-modele-er" title="Permalink to this headline">#</a></h2>
+<p><img alt="imag" src="_images/ER.png" /></p>
+</section>
+<section id="apercu-de-l-analyse-des-donnees">
+<h2>Aperçu de l’analyse des données<a class="headerlink" href="#apercu-de-l-analyse-des-donnees" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Analyse longitudinale des causes de la morbidité aux États-Unis</p></li>
+<li><p>Analyse temporelle de l’évolution des tendances dans le temps aux États-Unis</p></li>
+<li><p>Analyse catégorielle des causes primaires de décès</p></li>
+<li><p>Analyse géographique des différences de tendances dans les causes de décès</p></li>
+</ol>
+</section>
+<section id="importation-des-donnees">
+<h2>Importation des données<a class="headerlink" href="#importation-des-donnees" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+LeadingCauses = pd.read_csv(&quot;dataset/leading_causes.csv&quot;)
+
+deathInUsCities = pd.read_csv(&quot;dataset/death_in_122UScities.csv&quot;)
+
+statepops = pd.read_csv(&quot;dataset/statepops.csv&quot;)
+
+print(LeadingCauses.shape)
+print(deathInUsCities.shape)
+print(statepops.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10296, 6)
+(346342, 13)
+(3468, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>LeadingCauses.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>113 Cause Name</th>
+      <th>Cause Name</th>
+      <th>State</th>
+      <th>Deaths</th>
+      <th>Age-adjusted Death Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>Accidents (unintentional injuries) (V01-X59,Y8...</td>
+      <td>Unintentional injuries</td>
+      <td>Alabama</td>
+      <td>2755</td>
+      <td>55.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016</td>
+      <td>Accidents (unintentional injuries) (V01-X59,Y8...</td>
+      <td>Unintentional injuries</td>
+      <td>Alaska</td>
+      <td>439</td>
+      <td>63.1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2016</td>
+      <td>Accidents (unintentional injuries) (V01-X59,Y8...</td>
+      <td>Unintentional injuries</td>
+      <td>Arizona</td>
+      <td>4010</td>
+      <td>54.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2016</td>
+      <td>Accidents (unintentional injuries) (V01-X59,Y8...</td>
+      <td>Unintentional injuries</td>
+      <td>Arkansas</td>
+      <td>1604</td>
+      <td>51.8</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2016</td>
+      <td>Accidents (unintentional injuries) (V01-X59,Y8...</td>
+      <td>Unintentional injuries</td>
+      <td>California</td>
+      <td>13213</td>
+      <td>32.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>deathInUsCities.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>WEEK</th>
+      <th>Week Ending Date</th>
+      <th>REGION</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Pneumonia and Influenza Deaths</th>
+      <th>All Deaths</th>
+      <th>&lt;1 year (all cause deaths)</th>
+      <th>1-24 years (all cause deaths)</th>
+      <th>25-44 years</th>
+      <th>45-64 years (all cause deaths)</th>
+      <th>65+ years (all cause deaths)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1962</td>
+      <td>1</td>
+      <td>01/06/1962</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>11.0</td>
+      <td>262.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>11.0</td>
+      <td>87.0</td>
+      <td>146.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1962</td>
+      <td>2</td>
+      <td>01/13/1962</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>11.0</td>
+      <td>270.0</td>
+      <td>14.0</td>
+      <td>8.0</td>
+      <td>11.0</td>
+      <td>70.0</td>
+      <td>167.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1962</td>
+      <td>3</td>
+      <td>01/20/1962</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>5.0</td>
+      <td>237.0</td>
+      <td>11.0</td>
+      <td>8.0</td>
+      <td>10.0</td>
+      <td>66.0</td>
+      <td>142.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1962</td>
+      <td>4</td>
+      <td>01/27/1962</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>12.0</td>
+      <td>285.0</td>
+      <td>22.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+      <td>73.0</td>
+      <td>175.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1962</td>
+      <td>5</td>
+      <td>02/03/1962</td>
+      <td>1</td>
+      <td>MA</td>
+      <td>Boston</td>
+      <td>5.0</td>
+      <td>245.0</td>
+      <td>15.0</td>
+      <td>9.0</td>
+      <td>17.0</td>
+      <td>62.0</td>
+      <td>142.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>statepops.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state</th>
+      <th>Postal Code</th>
+      <th>Year</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaska</td>
+      <td>AK</td>
+      <td>1950</td>
+      <td>0.135</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alaska</td>
+      <td>AK</td>
+      <td>1951</td>
+      <td>0.158</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Alaska</td>
+      <td>AK</td>
+      <td>1952</td>
+      <td>0.189</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Alaska</td>
+      <td>AK</td>
+      <td>1953</td>
+      <td>0.205</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Alaska</td>
+      <td>AK</td>
+      <td>1954</td>
+      <td>0.215</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>LeadingCauses.columns = [&#39;Year&#39;,&#39;Cause_Name_113&#39;,&#39;Cause_Name&#39;,&#39;State&#39;,&#39;Deaths&#39;,&#39;Age_adjusted_Death_Rate&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>deathInUsCities.columns = [&#39;Year&#39;,&#39;WEEK&#39;, &#39;Week_Ending_Date&#39;, &#39;REGION&#39;, &#39;State&#39;, &#39;City&#39;, &#39;Pneumonia_and_Influenza_Deaths&#39;, &#39;All_Deaths&#39;, &#39;&lt;1_year_(all_cause_deaths)&#39;, &#39;1-24_years_(all_cause_deaths)&#39;, &#39;25-44_years&#39;, &#39;45-64_years_(all_cause_deaths)&#39;, &#39;65+_years_(all_cause_deaths)&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>statepops.columns = [&#39;State&#39;, &#39;Postal Code&#39;, &#39;Year&#39;, &#39;population&#39;] 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>LeadingCauses = LeadingCauses.to_dict(orient=&quot;records&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>deathInUsCities = deathInUsCities.to_dict(orient=&quot;records&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>statepops = statepops.to_dict(orient=&quot;records&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creation-des-differentes-collection">
+<h2>Création des différentes collection<a class="headerlink" href="#creation-des-differentes-collection" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Importation de la libraires
+import pymongo
+
+# La connexion est ouverte au port 27017
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+
+# creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;LeadingCauses&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>collection.insert_many(LeadingCauses)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x1c10ef86af0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>doc = collection.find_one()
+doc
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a8c99a8320cb5b2a74ac23&#39;),
+ &#39;Year&#39;: 2016,
+ &#39;Cause_Name_113&#39;: &#39;Accidents (unintentional injuries) (V01-X59,Y85-Y86)&#39;,
+ &#39;Cause_Name&#39;: &#39;Unintentional injuries&#39;,
+ &#39;State&#39;: &#39;Alabama&#39;,
+ &#39;Deaths&#39;: 2755,
+ &#39;Age_adjusted_Death_Rate&#39;: 55.5}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Importation de la libraires
+import pymongo
+
+# La connexion est ouverte au port 27017
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+
+# creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;statepops&quot;]
+collection.insert_many(statepops)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x1c127cc1130&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Importation de la libraires
+import pymongo
+
+# La connexion est ouverte au port 27017
+client = pymongo.MongoClient(&#39;localhost&#39;, 27017)
+
+# creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;deathInUsCities&quot;]
+collection.insert_many(deathInUsCities)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.results.InsertManyResult at 0x1c1294e3af0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyse-categorielle-des-causes-de-deces">
+<h2>Analyse catégorielle des causes de décès<a class="headerlink" href="#analyse-categorielle-des-causes-de-deces" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Quelles</span> <span class="pre">sont</span> <span class="pre">les</span> <span class="pre">principales</span> <span class="pre">causes</span> <span class="pre">de</span> <span class="pre">décès</span> <span class="pre">?</span></code></p>
+<ul class="simple">
+<li><p>J’ai utilisé aggreagate pour créer un pipeline permettant d’interroger les données de la collection LeadingCauses et de sauvegarder les données dans une nouvelle collection nommée totalnumofdeath.</p></li>
+<li><p>PyMongo est utilisé pour interroger les données des bases de données et faire des visualisations.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>query = [
+        {&#39;$group&#39;: 
+                  {&#39;_id&#39;: &quot;$Cause_Name&quot;, &#39;number_of_death&#39;: {&#39;$sum&#39; : &quot;$Deaths&quot;}}},  
+        {&#39;$sort&#39;: {&#39;number_of_death&#39;: -1 }},
+        {&#39;$out&#39;: &quot;totalnumOfdeath&quot;}]
+
+documents = collection.aggregate(query)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;totalnumOfdeath&quot;]
+
+FIELDS = {&#39;_id&#39;: True, &#39;number_of_death&#39;:True}
+
+numofdeath = collection.find(projection=FIELDS)
+numofdeath = list(numofdeath)
+
+numofdeath_df = pd.DataFrame(numofdeath)
+numofdeath_df.columns = [&#39;cause&#39;, &#39;number of death&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>numofdeath_df
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cause</th>
+      <th>number of death</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>All causes</td>
+      <td>89405359</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Heart disease</td>
+      <td>23150366</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cancer</td>
+      <td>20489072</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Stroke</td>
+      <td>5160280</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CLRD</td>
+      <td>4869452</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Unintentional injuries</td>
+      <td>4355768</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Alzheimer's disease</td>
+      <td>2746824</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Diabetes</td>
+      <td>2632758</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Influenza and pneumonia</td>
+      <td>2077938</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Kidney disease</td>
+      <td>1615960</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Suicide</td>
+      <td>1299686</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize = (8,5))
+sns.set(style=&quot;whitegrid&quot;)
+
+ax = sns.barplot(x=&quot;cause&quot;, y=&quot;number of death&quot;, data=numofdeath_df)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=-30, ha = &#39;left&#39;)
+plt.xlabel(&quot;Causes&quot;)
+plt.ylabel(&quot;Nombre de décès&quot;)
+plt.title(&quot;Total de nombre de décès de 1999 à 2016&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_64_0.png" src="_images/lecture03_64_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Analyse</span> <span class="pre">de</span> <span class="pre">données</span></code></p>
+<ul class="simple">
+<li><p>Le graphique montre le nombre total de décès de chaque cause de 1999 à 2016</p></li>
+<li><p>Les maladies cardiaques et le cancer dominent la liste des causes de décès.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;LeadingCauses&quot;]
+
+doc = collection.find_one()
+doc
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a8c99a8320cb5b2a74ac23&#39;),
+ &#39;Year&#39;: 2016,
+ &#39;Cause_Name_113&#39;: &#39;Accidents (unintentional injuries) (V01-X59,Y85-Y86)&#39;,
+ &#39;Cause_Name&#39;: &#39;Unintentional injuries&#39;,
+ &#39;State&#39;: &#39;Alabama&#39;,
+ &#39;Deaths&#39;: 2755,
+ &#39;Age_adjusted_Death_Rate&#39;: 55.5}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>query = [{&quot;$match&quot;: {&quot;Cause_Name&quot;:&#39;Heart disease&#39;}},
+        {&quot;$group&quot;: {&quot;_id&quot;: &quot;$State&quot;, &quot;Age adjusted death rate&quot;: {&quot;$avg&quot;: &quot;$Age_adjusted_Death_Rate&quot;}}},
+        {&quot;$sort&quot;: {&quot;Age adjusted death rate&quot;: -1}},
+        {&quot;$out&quot;: &quot;heartDisease&quot;}]
+
+documents = collection.aggregate(query)
+
+# creation de la base de données &quot;projet&quot;
+mydb = client[&quot;MiniProjet2&quot;]
+
+# création d&#39;une collection
+collection = mydb[&quot;heartDisease&quot;]
+
+FIELDS = {&#39;_id&#39;: True, &#39;Age adjusted death rate&#39;:True}
+
+numofdeath = collection.find(projection=FIELDS)
+numofdeath = list(numofdeath)
+
+#numofdeath_df = pd.DataFrame(numofdeath)
+#numofdeath_df.columns = [&#39;cause&#39;, &#39;number of death&#39;]
+
+pd.DataFrame(numofdeath)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>Age adjusted death rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Mississippi</td>
+      <td>279.661111</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Oklahoma</td>
+      <td>261.305556</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Alabama</td>
+      <td>256.183333</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>District of Columbia</td>
+      <td>250.450000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Louisiana</td>
+      <td>244.083333</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Arkansas</td>
+      <td>242.627778</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>West Virginia</td>
+      <td>241.622222</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Kentucky</td>
+      <td>240.916667</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Tennessee</td>
+      <td>238.888889</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>New York</td>
+      <td>230.577778</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Michigan</td>
+      <td>230.333333</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Missouri</td>
+      <td>229.355556</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Nevada</td>
+      <td>221.488889</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Ohio</td>
+      <td>220.044444</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Georgia</td>
+      <td>218.311111</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Indiana</td>
+      <td>216.677778</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Pennsylvania</td>
+      <td>213.633333</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>South Carolina</td>
+      <td>210.205556</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Illinois</td>
+      <td>206.938889</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Texas</td>
+      <td>206.855556</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Delaware</td>
+      <td>206.272222</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Maryland</td>
+      <td>205.016667</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>New Jersey</td>
+      <td>204.811111</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>United States</td>
+      <td>203.527778</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>North Carolina</td>
+      <td>198.727778</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Rhode Island</td>
+      <td>198.616667</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Virginia</td>
+      <td>191.027778</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Iowa</td>
+      <td>189.500000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>California</td>
+      <td>187.833333</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Kansas</td>
+      <td>185.794444</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Florida</td>
+      <td>185.455556</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Wisconsin</td>
+      <td>184.555556</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Wyoming</td>
+      <td>183.305556</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>New Hampshire</td>
+      <td>181.505556</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>South Dakota</td>
+      <td>180.033333</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Maine</td>
+      <td>178.061111</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Connecticut</td>
+      <td>177.850000</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Vermont</td>
+      <td>177.505556</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Idaho</td>
+      <td>175.216667</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>North Dakota</td>
+      <td>174.188889</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Nebraska</td>
+      <td>174.000000</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Arizona</td>
+      <td>171.805556</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Montana</td>
+      <td>171.444444</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Massachusetts</td>
+      <td>170.994444</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>New Mexico</td>
+      <td>170.794444</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Washington</td>
+      <td>167.655556</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Utah</td>
+      <td>163.461111</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Alaska</td>
+      <td>162.661111</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Oregon</td>
+      <td>159.444444</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Hawaii</td>
+      <td>156.855556</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Colorado</td>
+      <td>152.172222</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Minnesota</td>
+      <td>138.427778</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="evolution-du-taux-de-mortalite-corrige-de-l-age-du-cancer-et-des-maladies-cardiaques-au-fil-du-temps">
+<h2>Évolution du taux de mortalité corrigé de l’âge du cancer et des maladies cardiaques au fil du temps<a class="headerlink" href="#evolution-du-taux-de-mortalite-corrige-de-l-age-du-cancer-et-des-maladies-cardiaques-au-fil-du-temps" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Comment</span> <span class="pre">le</span> <span class="pre">taux</span> <span class="pre">de</span> <span class="pre">mortalité</span> <span class="pre">du</span> <span class="pre">cancer</span> <span class="pre">et</span> <span class="pre">des</span> <span class="pre">maladies</span> <span class="pre">cardiaques</span> <span class="pre">évolue-t-il</span> <span class="pre">dans</span> <span class="pre">le</span> <span class="pre">temps</span> <span class="pre">?</span></code></p>
+<ul class="simple">
+<li><p>Utilisez l’agrégation pour créer un pipeline et sauvegardez-le dans une nouvelle collection.</p></li>
+<li><p>Exportation de la collection CancerandHeart dans un fichier csv</p></li>
+<li><p>Utilisation de Pymongo pour l’interrogation et la visualisation.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;LeadingCauses&quot;]
+
+query = [    
+        {&quot;$match&quot;: {&quot;$or&quot; : [ {&quot;Cause_Name&quot;: &quot;Cancer&quot;} , {&quot;Cause_Name&quot;: &quot;Heart disease&quot;}] }},
+        {&quot;$match&quot;: { &quot;State&quot; : &quot;United States&quot;}},
+        {&quot;$sort&quot; : {&quot;Year&quot;: 1}},
+        {&quot;$out&quot;: &quot;CancerandHeart&quot;}
+        ]
+
+documents = collection.aggregate(query)
+
+FIELDS = {&#39;Year&#39;: True, &quot;Cause_Name&quot;:True, &quot;Age_adjusted_Death_Rate&quot;:True}
+
+
+mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;CancerandHeart&quot;]
+
+ageadejusted = collection.find(projection=FIELDS)
+ageadejusted = list(ageadejusted)
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ageadejusted_df = pd.DataFrame(ageadejusted)
+ageadejusted_df = ageadejusted_df.drop(columns=[&#39;_id&#39;])
+
+ageadejusted_df
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Cause_Name</th>
+      <th>Age_adjusted_Death_Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1999</td>
+      <td>Cancer</td>
+      <td>200.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1999</td>
+      <td>Heart disease</td>
+      <td>266.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2000</td>
+      <td>Cancer</td>
+      <td>199.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2000</td>
+      <td>Heart disease</td>
+      <td>257.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2001</td>
+      <td>Cancer</td>
+      <td>196.5</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2001</td>
+      <td>Heart disease</td>
+      <td>249.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2002</td>
+      <td>Cancer</td>
+      <td>194.3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2002</td>
+      <td>Heart disease</td>
+      <td>244.6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2003</td>
+      <td>Cancer</td>
+      <td>190.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2003</td>
+      <td>Heart disease</td>
+      <td>236.3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2004</td>
+      <td>Cancer</td>
+      <td>186.8</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2004</td>
+      <td>Heart disease</td>
+      <td>221.6</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2005</td>
+      <td>Cancer</td>
+      <td>185.1</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2005</td>
+      <td>Heart disease</td>
+      <td>216.8</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2006</td>
+      <td>Cancer</td>
+      <td>181.8</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2006</td>
+      <td>Heart disease</td>
+      <td>205.5</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2007</td>
+      <td>Cancer</td>
+      <td>179.3</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2007</td>
+      <td>Heart disease</td>
+      <td>196.1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2008</td>
+      <td>Cancer</td>
+      <td>176.4</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2008</td>
+      <td>Heart disease</td>
+      <td>192.1</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2009</td>
+      <td>Cancer</td>
+      <td>173.5</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2009</td>
+      <td>Heart disease</td>
+      <td>182.8</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2010</td>
+      <td>Cancer</td>
+      <td>172.8</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2010</td>
+      <td>Heart disease</td>
+      <td>179.1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2011</td>
+      <td>Cancer</td>
+      <td>169.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2011</td>
+      <td>Heart disease</td>
+      <td>173.7</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2012</td>
+      <td>Cancer</td>
+      <td>166.5</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2012</td>
+      <td>Heart disease</td>
+      <td>170.5</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2013</td>
+      <td>Cancer</td>
+      <td>163.2</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2013</td>
+      <td>Heart disease</td>
+      <td>169.8</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2014</td>
+      <td>Cancer</td>
+      <td>161.2</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2014</td>
+      <td>Heart disease</td>
+      <td>167.0</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2015</td>
+      <td>Cancer</td>
+      <td>158.5</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2015</td>
+      <td>Heart disease</td>
+      <td>168.5</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2016</td>
+      <td>Cancer</td>
+      <td>155.8</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2016</td>
+      <td>Heart disease</td>
+      <td>165.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ageadejusted_df.index
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([1999, 1999, 2000, 2000, 2001, 2001, 2002, 2002, 2003, 2003, 2004,
+            2004, 2005, 2005, 2006, 2006, 2007, 2007, 2008, 2008, 2009, 2009,
+            2010, 2010, 2011, 2011, 2012, 2012, 2013, 2013, 2014, 2014, 2015,
+            2015, 2016, 2016],
+           dtype=&#39;int64&#39;, name=&#39;Year&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+
+fig, ax = plt.subplots()
+fig.set_size_inches(12.7, 8.27)
+ax = sns.lineplot(x= &quot;Year&quot;, y=&quot;Age_adjusted_Death_Rate&quot;,
+             hue=&quot;Cause_Name&quot;,
+             data=ageadejusted_df)
+plt.xlabel(&quot;Année&quot;)
+plt.ylabel(&quot;Age ajusté par taux de décès&quot;)
+plt.title(&quot;Age ajusté par taux de décès de 1999 à 2016&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_72_0.png" src="_images/lecture03_72_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Analyse</span> <span class="pre">de</span> <span class="pre">données</span></code></p>
+<ul class="simple">
+<li><p>Le cancer et les maladies cardiaques sont au centre de l’attention car ils ont dominé les autres causes de décès.</p></li>
+<li><p>Le cancer et les maladies cardiaques ont diminué au fil du temps, probablement en raison des progrès technologiques.</p></li>
+<li><p>Les maladies cardiaques avaient un taux de mortalité élevé en 1999 et ont rapidement diminué au cours de la dernière décennie.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;LeadingCauses&quot;]
+
+collection.find_one()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a8c99a8320cb5b2a74ac23&#39;),
+ &#39;Year&#39;: 2016,
+ &#39;Cause_Name_113&#39;: &#39;Accidents (unintentional injuries) (V01-X59,Y85-Y86)&#39;,
+ &#39;Cause_Name&#39;: &#39;Unintentional injuries&#39;,
+ &#39;State&#39;: &#39;Alabama&#39;,
+ &#39;Deaths&#39;: 2755,
+ &#39;Age_adjusted_Death_Rate&#39;: 55.5}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyse-generalisee-de-la-mortalite-par-localisation">
+<h2>Analyse généralisée de la mortalité par localisation<a class="headerlink" href="#analyse-generalisee-de-la-mortalite-par-localisation" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Quels</span> <span class="pre">États</span> <span class="pre">ont</span> <span class="pre">le</span> <span class="pre">plus</span> <span class="pre">grand</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">décès,</span> <span class="pre">toutes</span> <span class="pre">causes</span> <span class="pre">confondues</span> <span class="pre">?</span></code></p>
+<ol class="simple">
+<li><p>Analyse des différents taux de mortalité au niveau des États.</p></li>
+<li><p>Comparaison entre le nombre total de décès et la population totale des différents États.</p></li>
+<li><p>Création d’une visualisation convaincante à l’aide de MongoDB pour représenter les grandes variations des données.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;LeadingCauses&quot;]
+
+query = [    
+        {&quot;$match&quot;: {&quot;Cause_Name&quot;:&quot;All causes&quot;}},
+        {&quot;$group&quot;: {&quot;_id&quot;: &quot;$State&quot;, &quot;Deaths&quot;: {&quot;$avg&quot;: &quot;$Deaths&quot;}}},
+        {&quot;$sort&quot; : {&quot;Deaths&quot;: -1}},
+        {&quot;$skip&quot; : 1},
+        {&quot;$out&quot;: &quot;avgDeathbyST&quot;}
+    ]
+
+documents = collection.aggregate(query)
+
+FIELDS = {&#39;_id&#39;: True, &#39;Deaths&#39;:True}
+
+mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;avgDeathbyST&quot;]
+
+avgDeath = collection.find(projection=FIELDS)
+avgDeath = list(avgDeath)
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;statepops&quot;]
+
+query = ([
+    {&quot;$match&quot;: {&quot;Year&quot;: {&quot;$gt&quot;: 1998}}},
+    {&quot;$group&quot;: {
+                &quot;_id&quot;: &quot;$State&quot;,
+                &quot;population&quot;: {&quot;$avg&quot;:{&quot;$multiply&quot;: [&quot;$population&quot; , 1000000]}},
+                }
+    },
+    {&quot;$sort&quot; : {&quot;population&quot;: -1}},
+    {&quot;$out&quot;: &quot;popperstate&quot;}
+])
+
+documents = collection.aggregate(query)
+
+FIELDS = {&#39;_id&#39;: True, &quot;population&quot;:True}
+
+mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;popperstate&quot;]
+
+PopPerState = collection.find(projection=FIELDS)
+PopPerState = list(PopPerState)
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>avgDeath_df = pd.DataFrame(avgDeath)
+PopPerState_df = pd.DataFrame(PopPerState)
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>avgDeath_df.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>Deaths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>California</td>
+      <td>239281.277778</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Florida</td>
+      <td>173951.277778</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Texas</td>
+      <td>164957.055556</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>New York</td>
+      <td>152309.888889</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pennsylvania</td>
+      <td>128549.055556</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>PopPerState_df.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>_id</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>California</td>
+      <td>3.667951e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Texas</td>
+      <td>2.429297e+07</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>New York</td>
+      <td>1.932651e+07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Florida</td>
+      <td>1.836098e+07</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Illinois</td>
+      <td>1.268792e+07</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>avgDeath_df.columns = [&#39;state&#39;, &#39;Nombre de décès&#39;]
+PopPerState_df.columns = [&#39;state&#39;, &#39;Population&#39;]
+
+sns.set(style=&quot;whitegrid&quot;)
+
+fig, axes = plt.subplots(1, 2, figsize=(15, 12))
+sns.despine(left=True)
+
+sns.barplot(x=&#39;Nombre de décès&#39;, y=&quot;state&quot;, data=avgDeath_df, ax=axes[0])\
+.set_title(&quot;Nombre de décès par État de 1999 à 2016&quot;)
+
+sns.barplot(x=&quot;Population&quot;, y=&#39;state&#39;, data=PopPerState_df, ax=axes[1])\
+.set_title(&quot;Population moyenne par État de 1999 à 2016&quot;)
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_81_0.png" src="_images/lecture03_81_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Analyse</span> <span class="pre">des</span> <span class="pre">graphiques</span></code></p>
+<ul class="simple">
+<li><p>La Californie a le plus grand nombre de décès, toutes causes confondues, mais elle a le nombre moyen d’habitants le plus élevé.</p></li>
+<li><p>La Floride a le deuxième taux de mortalité le plus élevé, mais elle se situe au quatrième rang en termes de population. Cela implique que la Floride a un taux de mortalité par habitant élevé.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>collection.find_one()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;63a8df3a8320cb5b2a74e1e9&#39;),
+ &#39;Year&#39;: 1962,
+ &#39;WEEK&#39;: 1,
+ &#39;Week_Ending_Date&#39;: &#39;01/06/1962&#39;,
+ &#39;REGION&#39;: 1,
+ &#39;State&#39;: &#39;MA&#39;,
+ &#39;City&#39;: &#39;Boston&#39;,
+ &#39;Pneumonia_and_Influenza_Deaths&#39;: 11.0,
+ &#39;All_Deaths&#39;: 262.0,
+ &#39;&lt;1_year_(all_cause_deaths)&#39;: 10.0,
+ &#39;1-24_years_(all_cause_deaths)&#39;: 8.0,
+ &#39;25-44_years&#39;: 11.0,
+ &#39;45-64_years_(all_cause_deaths)&#39;: 87.0,
+ &#39;65+_years_(all_cause_deaths)&#39;: 146.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;deathInUsCities&quot;]
+
+query = [
+    {&#39;$match&#39;: {&#39;Year&#39;: {&#39;$gt&#39;: 1998}}},
+    {&#39;$group&#39;: { 
+                &quot;_id&quot;: &quot;$Year&quot;, 
+                &quot;&lt;1 year (all cause deaths)&quot;: {&quot;$sum&quot;: &quot;$&lt;1 year (all cause deaths)&quot;},
+                &quot;1-24 years (all cause deaths)&quot;: {&quot;$sum&quot;: &quot;$1-24 years (all cause deaths)&quot;},
+                &quot;25-44 years&quot;: {&quot;$sum&quot;: &quot;$25-44 years&quot;},
+                &quot;45-64 years (all cause deaths)&quot;: {&quot;$sum&quot;: &quot;$45-64 years (all cause deaths)&quot;},
+                &quot;65+ years (all cause deaths)&quot;: {&quot;$sum&quot;: &quot;$65+ years (all cause deaths)&quot;}
+            }
+    },
+    {&quot;$sort&quot;: {&quot;_id&quot;: 1}},
+    {&quot;$out&quot;: &quot;DeathbyAgeGroup&quot;}
+]
+
+documents = collection.aggregate(query)
+
+FIELDS = {&#39;_id&#39;: True, &quot;&lt;1 year (all cause deaths)&quot;:True, 
+         &quot;1-24 years (all cause deaths)&quot;:True, &quot;25-44 years&quot;:True, 
+         &quot;45-64 years (all cause deaths)&quot;:True, &quot;65+ years (all cause deaths)&quot;:True}
+
+mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;DeathbyAgeGroup&quot;]
+
+DeathbyAgeGroup = collection.find(projection=FIELDS)
+DeathbyAgeGroup = list(DeathbyAgeGroup)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>DeathbyAgeGroup_df = pd.DataFrame(DeathbyAgeGroup)
+DeathbyAgeGroup_df.columns = [&#39;Year&#39;, &quot;&lt;1 year&quot;, &quot;1-24 years&quot;,&quot;25-44 years&quot;,&#39;45-64 years&#39;,&#39;65+ years&#39;]
+DeathbyAgeGroup_df= DeathbyAgeGroup_df.set_index(&#39;Year&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>DeathbyAgeGroup_df.plot.line(figsize=(15,10))
+plt.title(&quot;Number of death per year by age group from 1999 to 2016&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Number of death per year by age group from 1999 to 2016&#39;)
+</pre></div>
+</div>
+<img alt="_images/lecture03_86_1.png" src="_images/lecture03_86_1.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Analyse</span> <span class="pre">des</span> <span class="pre">graphiques</span></code></p>
+<ul class="simple">
+<li><p>Sans surprise, ce sont les personnes de plus de 65 ans qui sont les plus nombreuses à mourir.</p></li>
+<li><p>On constate une diminution du nombre de décès dans tous les groupes d’âge au fil du temps.</p></li>
+</ul>
+</section>
+<section id="nombre-moyen-de-deces-de-personnes-agees-par-etat">
+<h2>Nombre moyen de décès de personnes âgées par État<a class="headerlink" href="#nombre-moyen-de-deces-de-personnes-agees-par-etat" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Quels</span> <span class="pre">sont</span> <span class="pre">les</span> <span class="pre">États</span> <span class="pre">où</span> <span class="pre">le</span> <span class="pre">nombre</span> <span class="pre">moyen</span> <span class="pre">de</span> <span class="pre">décès</span> <span class="pre">de</span> <span class="pre">personnes</span> <span class="pre">âgées</span> <span class="pre">est</span> <span class="pre">le</span> <span class="pre">plus</span> <span class="pre">élevé</span> <span class="pre">?</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;deathInUsCities&quot;]
+
+query = [
+    {&quot;$match&quot;: {&quot;Year&quot;: {&quot;$gt&quot;: 1998}}},
+    {&quot;$group&quot;: { 
+                &quot;_id&quot;: {&quot;Year&quot;: &quot;$Year&quot;, &quot;State&quot;: &quot;$State&quot;},
+                &quot;65+ years (all cause deaths)&quot;: {&quot;$sum&quot;: &quot;$65+ years (all cause deaths)&quot;}
+            }
+    },
+    {&quot;$group&quot;: {
+                &quot;_id&quot;: &quot;$_id.State&quot; ,
+                &quot;65+ years (all cause deaths)&quot;: {&quot;$avg&quot;: &quot;$65+ years (all cause deaths)&quot;}
+    }},
+    {&quot;$sort&quot;: { &quot;65+ years (all cause deaths)&quot;: -1}},
+    {&quot;$limit&quot;: 3},
+    {&quot;$out&quot;: &quot;ElderyDeathbycities&quot;}
+]
+documents = collection.aggregate(query)
+
+FIELDS = {&#39;_id&#39;: True, &quot;65+ years (all cause deaths)&quot;:True}
+
+mydb = client[&quot;MiniProjet2&quot;]
+collection = mydb[&quot;ElderyDeathbycities&quot;]
+
+elderlyDeath = collection.find(projection=FIELDS)
+elderlyDeath = list(elderlyDeath)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>elderlyDeath_df = pd.DataFrame(elderlyDeath)
+elderlyDeath_df = elderlyDeath_df[elderlyDeath_df.columns[::-1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>elderlyDeath_df.columns = [&#39;Average Number of Death&#39;, &#39;state&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>elderlyDeath_df = elderlyDeath_df.set_index(&#39;state&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>elderlyDeath_df.plot.pie(subplots = True, figsize = (10,8), autopct=&#39;%.2f&#39;)
+plt.title(&#39;Nombre moyen de décès de personnes âgées par Etat&#39;)
+plt.ylabel(&quot;Nombre moyen de décès&quot;)
+plt.xlabel(&quot;&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture03_93_0.png" src="_images/lecture03_93_0.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Analyse</span> <span class="pre">des</span> <span class="pre">graphiques</span></code></p>
+<ul class="simple">
+<li><p>Ce graphique montre les trois États où le nombre de décès de personnes âgées est le plus élevé.</p></li>
+<li><p>Maryland a le nombre moyen de décès le plus élevé parmi les personnes âgées de plus de 65 ans.</p></li>
+</ul>
+<p><a name="Concl"></a></p>
+</section>
+<section id="conclusion">
+<h2><strong>Conclusion</strong><a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Nous nous améliorons considérablemment !</p></li>
+<li><p>Il existe toujours une grande disparité géographique entre la réduction des taux de mortalité</p></li>
+<li><p>Les décès dus au cancer et aux maladies cardiaques ont considérablement diminué au cours de la dernière décennie</p></li>
+</ol>
+</section>
+<section id="travaux-futurs">
+<h2><strong>Travaux futurs</strong><a class="headerlink" href="#travaux-futurs" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Superposer des données économiques pour mieux évaluer l’effet de la richesse sur les paramètres de mortalité.</p></li>
+<li><p>Créer des graphiques interactifs avec des données actualisées en direct.</p></li>
+<li><p>Construire une pile ETL automatisée pour permettre le chargement rapide de nouvelles données dans le système.</p></li>
+</ul>
+</section>
+<section id="de-meme-sur-neo4j-redis">
+<h2>De même sur <code class="docutils literal notranslate"><span class="pre">Neo4J,</span> <span class="pre">Redis</span></code><a class="headerlink" href="#de-meme-sur-neo4j-redis" title="Permalink to this headline">#</a></h2>
+<p><img alt="imag" src="_images/neo4j.png" /></p>
+<p><img alt="imag" src="_images/redis.png" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fin-du-projet">
+<h1>Fin du projet<a class="headerlink" href="#fin-du-projet" title="Permalink to this headline">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>Projet Complet de Data Science</strong></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ANALYSE CREDIT-RISQUE-MODELISATION AVEC R</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Roland MONDJEHI<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>ANALYSE CREDIT-RISQUE-MODELISATION AVEC R &#8212; Data Scientist</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Projet : Manipulationn de Base de données NoSQL" href="lecture03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Scientist</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture01.html">
+   <strong>
+    Analyse des données du jeu de donnnées des voitures d’occasion
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture02.html">
+   <strong>
+    Projet Complet de Data Science
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture03.html">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aigleroyale/portline"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lecture04.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partie1-machine-learning-pour-la-modelisation-du-risque-de-credit-dans-r-credit-scoring">
+     Partie1 : MACHINE LEARNING POUR LA MODELISATION DU RISQUE DE CREDIT DANS R (CREDIT SCORING)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comprehension-de-la-problematique-business">
+       <strong>
+        Compréhension de la problématique business
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analyse-exploratoire-des-donnees">
+       <strong>
+        Analyse Exploratoire des données
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nettoyage-de-donnees">
+       <strong>
+        Nettoyage de données
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#outliers">
+         <strong>
+          Outliers
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#valeurs-manquantes">
+         <strong>
+          Valeurs manquantes
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#preparation-des-donnees-pour-la-phase-de-modelisation">
+       <strong>
+        Préparation des données pour la phase de modélisation
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#normalisation-des-variables-numeriques">
+         <strong>
+          Normalisation des variables numériques
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#donnees-d-entrainement-et-de-test">
+         <strong>
+          Données d’entraînement et de test
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#resolution-du-probleme-de-desequilibre-de-classe">
+         <strong>
+          Résolution du problème de déséquilibre de classe
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelisation">
+       <strong>
+        Modélisation
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#choix-de-la-metrique-d-evaluation-de-performance-du-modele">
+         <strong>
+          Choix de la métrique d’évaluation de performance du modèle
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#modele-de-regression-logistique">
+         <strong>
+          Modèle de Régression logistique
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#construction-et-evaluons-un-modele-de-regression-logistique-en-utilisant-l-ensemble-train-set">
+         <strong>
+          Construction et évaluons un modèle de régression logistique en utilisant l’ensemble
+         </strong>
+         *
+         <strong>
+          train_set
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#courbe-roc">
+         <strong>
+          Courbe ROC
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#sauvegarde-des-modeles">
+         <strong>
+          Sauvegarde des modèles
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partie2-integrationt-dans-shinydashbord-du-modele-de-machine-learning-pour-la-prediction-du-risque-de-credit-bancaire">
+     Partie2 : INTEGRATIONT DANS SHINYDASHBORD DU MODELE DE MACHINE LEARNING POUR LA PREDICTION DU RISQUE DE CREDIT BANCAIRE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>ANALYSE CREDIT-RISQUE-MODELISATION AVEC R</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partie1-machine-learning-pour-la-modelisation-du-risque-de-credit-dans-r-credit-scoring">
+     Partie1 : MACHINE LEARNING POUR LA MODELISATION DU RISQUE DE CREDIT DANS R (CREDIT SCORING)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comprehension-de-la-problematique-business">
+       <strong>
+        Compréhension de la problématique business
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analyse-exploratoire-des-donnees">
+       <strong>
+        Analyse Exploratoire des données
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nettoyage-de-donnees">
+       <strong>
+        Nettoyage de données
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#outliers">
+         <strong>
+          Outliers
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#valeurs-manquantes">
+         <strong>
+          Valeurs manquantes
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#preparation-des-donnees-pour-la-phase-de-modelisation">
+       <strong>
+        Préparation des données pour la phase de modélisation
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#normalisation-des-variables-numeriques">
+         <strong>
+          Normalisation des variables numériques
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#donnees-d-entrainement-et-de-test">
+         <strong>
+          Données d’entraînement et de test
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#resolution-du-probleme-de-desequilibre-de-classe">
+         <strong>
+          Résolution du problème de déséquilibre de classe
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#modelisation">
+       <strong>
+        Modélisation
+       </strong>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#choix-de-la-metrique-d-evaluation-de-performance-du-modele">
+         <strong>
+          Choix de la métrique d’évaluation de performance du modèle
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#modele-de-regression-logistique">
+         <strong>
+          Modèle de Régression logistique
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#construction-et-evaluons-un-modele-de-regression-logistique-en-utilisant-l-ensemble-train-set">
+         <strong>
+          Construction et évaluons un modèle de régression logistique en utilisant l’ensemble
+         </strong>
+         *
+         <strong>
+          train_set
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#courbe-roc">
+         <strong>
+          Courbe ROC
+         </strong>
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#sauvegarde-des-modeles">
+         <strong>
+          Sauvegarde des modèles
+         </strong>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#partie2-integrationt-dans-shinydashbord-du-modele-de-machine-learning-pour-la-prediction-du-risque-de-credit-bancaire">
+     Partie2 : INTEGRATIONT DANS SHINYDASHBORD DU MODELE DE MACHINE LEARNING POUR LA PREDICTION DU RISQUE DE CREDIT BANCAIRE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="analyse-credit-risque-modelisation-avec-r">
+<h1>ANALYSE CREDIT-RISQUE-MODELISATION AVEC R<a class="headerlink" href="#analyse-credit-risque-modelisation-avec-r" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Partie1 : MACHINE LEARNING POUR LA MODELISATION DU RISQUE DE CREDIT DANS R (CREDIT SCORING)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Il</span> <span class="pre">s'agit</span> <span class="pre">d'un</span> <span class="pre">projet</span> <span class="pre">pour</span> <span class="pre">construire</span> <span class="pre">et</span> <span class="pre">évaluer</span> <span class="pre">un</span> <span class="pre">modèle</span> <span class="pre">de</span> <span class="pre">Machine</span> <span class="pre">Learning</span> <span class="pre">afin</span> <span class="pre">de</span> <span class="pre">prédire</span> <span class="pre">si</span> <span class="pre">un</span> <span class="pre">demandeur</span> <span class="pre">de</span> <span class="pre">crédit</span> <span class="pre">sera</span> <span class="pre">en</span> <span class="pre">défaut</span> <span class="pre">de</span> <span class="pre">paiement</span> <span class="pre">ou</span> <span class="pre">non</span></code></p>
+<ul class="simple">
+<li><p>Partie2 : INTEGRATIONT DANS SHINYDASHBORD DU MODELE DE MACHINE LEARNING POUR LA PREDICTION DU RISQUE DE CREDIT BANCAIRE</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Construstion</span> <span class="pre">d'un</span> <span class="pre">modèle</span> <span class="pre">de</span> <span class="pre">forêt</span> <span class="pre">aléatoir</span> <span class="pre">pour</span> <span class="pre">modéliser</span> <span class="pre">la</span> <span class="pre">probabilité</span> <span class="pre">de</span> <span class="pre">défaut</span> <span class="pre">de</span> <span class="pre">paiement</span> <span class="pre">et</span> <span class="pre">prédire</span> <span class="pre">si</span> <span class="pre">un</span> <span class="pre">demandeur</span> <span class="pre">de</span> <span class="pre">prêt</span> <span class="pre">pourra</span> <span class="pre">ou</span> <span class="pre">non</span> <span class="pre">rembourser</span> <span class="pre">son</span> <span class="pre">crédit.</span></code>
+<code class="docutils literal notranslate"><span class="pre">Déploiement</span> <span class="pre">du</span> <span class="pre">modèle</span> <span class="pre">dans</span> <span class="pre">une</span> <span class="pre">application</span> <span class="pre">web</span> <span class="pre">type</span> <span class="pre">tableau</span> <span class="pre">de</span> <span class="pre">bord</span> <span class="pre">qui</span> <span class="pre">affiche</span> <span class="pre">la</span> <span class="pre">probabilité</span> <span class="pre">de</span> <span class="pre">défaut</span> <span class="pre">de</span> <span class="pre">paiement</span> <span class="pre">d'un</span> <span class="pre">nouveau</span> <span class="pre">demandeur</span> <span class="pre">de</span> <span class="pre">crédit</span> <span class="pre">ainsi</span> <span class="pre">que</span> <span class="pre">son</span> <span class="pre">statut</span> <span class="pre">(Eligible</span> <span class="pre">ou</span> <span class="pre">non</span> <span class="pre">Eligible</span> <span class="pre">au</span> <span class="pre">crédit.)</span></code></p>
+<section id="partie1-machine-learning-pour-la-modelisation-du-risque-de-credit-dans-r-credit-scoring">
+<h2>Partie1 : MACHINE LEARNING POUR LA MODELISATION DU RISQUE DE CREDIT DANS R (CREDIT SCORING)<a class="headerlink" href="#partie1-machine-learning-pour-la-modelisation-du-risque-de-credit-dans-r-credit-scoring" title="Permalink to this headline">#</a></h2>
+<section id="comprehension-de-la-problematique-business">
+<h3><strong>Compréhension de la problématique business</strong><a class="headerlink" href="#comprehension-de-la-problematique-business" title="Permalink to this headline">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/cred.jpg"><img alt="_images/cred.jpg" src="_images/cred.jpg" style="width: 1008.0px; height: 672.0px;" /></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lorsqu’une banque prête de l’argent à une personne, elle prend le risque que cette dernière ne rembourse pas cet argent dans le délai convenu. Ce risque est appelé Risque de Crédit. Alors avant d’octroyer un crédit, les banques vérifient si le client (ou la cliente) qui demandent un prêt sera capable ou pas de le rembourser. Cette vérification se fait grâce à l’analyse de plusieurs paramètres tels que les revenus, les biens, les dépenses actuelles du client, etc. Cette analyse est encore effectuée manuellement par plusieurs banques. Ainsi, elle est très consommatrice en temps et en ressources financières.</p>
+<p>Grâce au Machine Learning, il est possible d’automatiser cette tâche et de pouvoir prédire avec plus de précision les clients qui seront en défaut de paiement.</p>
+<p>Dans ce projet, nous allons construire un algorithme capable de prédire si une personne sera en défaut de paiement ou pas (1 : défaut, 0 : non-défaut). Il s’agit donc d’un problème de classification car nous voulons prédire une variable discrète (binaire pour être précis).</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggthemes</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ROSE</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Les données proviennent de <a class="reference external" href="https://www.kaggle.com/laotse/credit-risk-dataset">Kaggle</a> qui est la plus célèbre plateforme de compétitions en Data Science.</p>
+<p>L’ensemble des données compte 12 variables et 32581 observations (lignes) historiques. Chaque observation correspond à une personne ayant contracté un prêt. On a des variables qui décrivent le prêt (montant, statut, taux d’intérêt, etc.) et d’autres variables qui décrivent la personne ayant ontracté ce prêt (age, revenu, etc.). Nous allons donc utiliser ces données historiques afin de construire le modèle de <em>scoring</em> qui va prédire le statut des nouveaux candidats à un crédit.</p>
+<p>Il est très important de comprendre les variables de notre jeu de données :</p>
+<ul class="simple">
+<li><p><em><strong>person_age</strong></em> : variable indiquant l’âge de la personne ;</p></li>
+<li><p><em><strong>person_income</strong></em> : variable indiquant le revenu annuel (ou encore le salaire) de la personne ;</p></li>
+<li><p><em><strong>person_home_ownership</strong></em> : variable indiquant le statut de la personne par rapport à son lieu d’habitation (popriétaire, locataire, etc.) ;</p></li>
+<li><p><em><strong>person_emp_length</strong></em> : variable indiquant la durée (en mois) depuis laquelle la personne est en activité professionnelle ;</p></li>
+<li><p><em><strong>loan_intent</strong></em> : variable indiquant le motif du crédit ;</p></li>
+<li><p><em><strong>loan_grade</strong></em> : Notation de la solvabilité du client. classes de A à G avec A indiquant la classe de solvabilité la plus élevée et G la plus basse ;</p></li>
+<li><p><em><strong>loan_amnt</strong></em> : variable indiquant le montant du prêt ;</p></li>
+<li><p><em><strong>loan_int_rate</strong></em> : variable indiquant le taux d’intérêt du crédit ;</p></li>
+<li><p><em><strong>loan_status</strong></em> : c’est la variable d’intérêt. Elle indique si la personne est en défaut de paiement (1) ou pas (0) ;</p></li>
+<li><p><em><strong>loan_percent_income</strong></em> : variable indiquant le pourcentage du crédit par rapport au revenu (ratio dette / revenu) ;</p></li>
+<li><p><em><strong>cb_person_default_on_file</strong></em> : variable indiquant si la personne a été en défaut de paiement ou pas dans le passé</p></li>
+<li><p><em><strong>cb_person_cred_hist_length</strong></em> : variable indiquant la durée des antécédents de crédits.</p></li>
+</ul>
+</section>
+<section id="analyse-exploratoire-des-donnees">
+<h3><strong>Analyse Exploratoire des données</strong><a class="headerlink" href="#analyse-exploratoire-des-donnees" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Transformation de la variable cible en variable catégorielle
+
+df$loan_status &lt;- as.factor(df$loan_status)
+
+# Table de fréquence de la variable cible (&#39;loan_status&#39;)
+
+print(prop.table(table(df$loan_status)))
+
+# Diagramme à barre de la variable &#39;loan_status&#39;
+
+plot(df$loan_status, main = &quot;Statut de crédit&quot;)
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/statut_credit.png"><img alt="_images/statut_credit.png" src="_images/statut_credit.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/loan.png"><img alt="_images/loan.png" src="_images/loan.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ces résultats montrent qu’il y un déséquilibre de classe très importants dans les données. En effet, seulement environ 22% de clients sont en défaut de paiement contre un peu plus de 78% de bons clients.</p>
+<p>Le déséquilibre de classe est souvent observé dans les données de crédit. la majorité des demandeurs de crédit sont incités à ne pas être en défaut de paiement car plus ils remboursent le crédit dans les délais, plus leurs côtes de crédit augmentent et donc ils peuvent à nouveau emprunter pour effectuer d’autres investissements.</p>
+<p>Si le déséquilibre observé ici est tout à fait normal, il n’en demeurre moins que cela représente un grand défi de classification pour les algorithmes de Machine Learning.</p>
+</div>
+<p>Il est intéressant de visualiser la distribution de la variable indiquant le montant du crédit chez les personnes en défaut de paiement et chez les autres afin de pouvoir effectuer une comparaison.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/loan2.png"><img alt="_images/loan2.png" src="_images/loan2.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+<p>Les deux histogrammes semblent être identiques mais en observant très bien on constate on remarque par exemple que les barres au niveau des montants très élevés sont plus longues chez les personnes en défaut de paiement que chez les autres. Cela veut dire qu’il y a beaucoup plus de personnes en défaut de paiement qui ont emprunté de grosses d’argent en comparaison aux personnes qui ne sont pas en défaut de paiement.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">%&gt;%</span>
+    <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">person_home_ownership</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">person_home_ownership</span><span class="p">))</span> <span class="o">+</span>
+    <span class="n">geom_bar</span><span class="p">()</span> <span class="o">+</span>
+    <span class="n">theme_bw</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/own.png"><img alt="_images/own.png" src="_images/own.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+</section>
+<section id="nettoyage-de-donnees">
+<h3><strong>Nettoyage de données</strong><a class="headerlink" href="#nettoyage-de-donnees" title="Permalink to this headline">#</a></h3>
+<section id="outliers">
+<h4><strong>Outliers</strong><a class="headerlink" href="#outliers" title="Permalink to this headline">#</a></h4>
+<p>Lors de l’analyse exploratoire des données, nous avons remarqué la présence de valeurs aberrantes. Ces valeurs aberrantes peuvent affecter la qualité d’un modèle de Machine Learning. Nous allons donc traiter. Avant de traiter les valeurs aberrantes, il faut d’abord les détecter.</p>
+<p>Il existe plusieurs méthodes de détection des <em>outliers</em>. Selon la méthode de la gamme interquartile (<em>IQR</em>), une valeur est aberante si :<br />
+$<span class="math notranslate nohighlight">\(valeur &lt; Q_1−1.5 * IQR\)</span><span class="math notranslate nohighlight">\( ou \)</span><span class="math notranslate nohighlight">\(valeur &gt; Q_3 + 1.5 * IQR\)</span><span class="math notranslate nohighlight">\( avec \)</span><span class="math notranslate nohighlight">\(IQR = Q_3 - Q_1\)</span>$</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Identification des valeurs aberantes au niveau de la variable &#39;person_income&#39;
+
+index_outlier_income &lt;- which(df_clean$person_income &lt; quantile(df_clean$person_income, 0.25) - 1.5 * IQR(df_clean$person_income) | df_clean$person_income &gt; quantile(df_clean$person_income, 0.75) + 1.5 * IQR(df_clean$person_income))
+
+# Suppression des valeurs aberantes au niveau de la variable &#39;person_income&#39;
+
+df_clean &lt;- df_clean[-index_outlier_income, ]
+
+# Vérification : Histogramme des revenus annuels
+
+hist(df_clean$person_income, main = &quot;Histogramme du revenu annuel&quot;
+</pre></div>
+</div>
+</section>
+<section id="valeurs-manquantes">
+<h4><strong>Valeurs manquantes</strong><a class="headerlink" href="#valeurs-manquantes" title="Permalink to this headline">#</a></h4>
+<p>Il existe deux principales techniques pour traiter les valeurs manquantes :</p>
+<ul class="simple">
+<li><p><strong>Supression</strong> des lignes contenant des valeurs manquantes ;</p></li>
+<li><p><strong>Remplacement</strong> des valeurs manqauntes en faisant des imputations par la moyenne, la médiane, …etc de la variable contenant ces valeurs manquantes. Il existe également d’autres méthodes d’imputation plus ou moins sophistiquées comme la méthode des k plus proches voisins (<em><strong>KNN</strong></em>).</p></li>
+</ul>
+<p>Dans la pratique, il est conseillé de choisir une méthode puis de construire et d’évaluer le modèle. Puis de changer la méthode d’imputation et reconstruit le modèle ainsi de suite afin de finalement choisir une méthode qui donne les meilleurs résultats.</p>
+</section>
+</section>
+<section id="preparation-des-donnees-pour-la-phase-de-modelisation">
+<h3><strong>Préparation des données pour la phase de modélisation</strong><a class="headerlink" href="#preparation-des-donnees-pour-la-phase-de-modelisation" title="Permalink to this headline">#</a></h3>
+<section id="normalisation-des-variables-numeriques">
+<h4><strong>Normalisation des variables numériques</strong><a class="headerlink" href="#normalisation-des-variables-numeriques" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Création d&#39;une fonction de normalisation</span>
+
+<span class="n">normalize</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="donnees-d-entrainement-et-de-test">
+<h4><strong>Données d’entraînement et de test</strong><a class="headerlink" href="#donnees-d-entrainement-et-de-test" title="Permalink to this headline">#</a></h4>
+<p>Commençons par diviser les données en un ensemble pour entraîner les algorithmes et un ensemble de test pour évaluer la capacité du modèle à généraliser sur de nouvelles données (performance du modèle construit).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Données d&#39;entraînement (80%) et de test (20%) (Division aléatoire avec la fonction sample)</span>
+
+<span class="n">seed</span> <span class="o">&lt;-</span> <span class="mi">131</span>
+
+<span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">index_train</span> <span class="o">&lt;-</span> <span class="n">sample</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nrow</span><span class="p">(</span><span class="n">df_clean2</span><span class="p">),</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">nrow</span><span class="p">(</span><span class="n">df_clean2</span><span class="p">))</span>
+
+<span class="n">train_set</span> <span class="o">&lt;-</span> <span class="n">df_clean2</span><span class="p">[</span><span class="n">index_train</span><span class="p">,</span> <span class="p">]</span>
+
+<span class="n">test_set</span> <span class="o">&lt;-</span> <span class="n">df_clean2</span><span class="p">[</span><span class="o">-</span><span class="n">index_train</span><span class="p">,</span> <span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="resolution-du-probleme-de-desequilibre-de-classe">
+<h4><strong>Résolution du problème de déséquilibre de classe</strong><a class="headerlink" href="#resolution-du-probleme-de-desequilibre-de-classe" title="Permalink to this headline">#</a></h4>
+<p>Il existe plusieurs techniques pour résoudre le problème de déséquilibre de classe dans les données. Le rééchantillonnage des données est l’une des techniques les plus utilisées. Les méthodes de rééchantillonage souvent utilisées sont :</p>
+<ul class="simple">
+<li><p>de sous-échantillonement de la classe majoritaire (<em><strong>Random Under Sampling</strong></em> ou <a class="reference external" href="https://www.rdocumentation.org/packages/ROSE/versions/0.0-3/topics/ROSE">RUS</a>) : cette méthode consiste à tirer au hasard des observations de cas de non-défaut pour correspondre au nombre d’observations de cas de défaut de paiement ;</p></li>
+<li><p>sur-échantillonement de la classe minoritaire (<em><strong>Random Over Sampling</strong></em> ou <a class="reference external" href="https://www.rdocumentation.org/packages/ROSE/versions/0.0-3/topics/ROSE">ROS</a>) : cette méthode consiste à effectuer des tirages aléatoires d’observations de cas de défaut et dupliquer ces observations afin de correspondre au nombre de cas de non-défaut.</p></li>
+</ul>
+<p>Ces deux méthodes conduisent à un équilibre parfait des cas de défaut et non-défaut de paiement mais présentent quand même des inconvénients. Avec le sous-échantillonnage, vous supprimez beaucoup d’informations. Dans la plupart des cas, jeter des données n’est pas souhaitable en apprentissage automatique. Avec le sur-échantillonnage, vous créez beaucoup de doublons d’informations ce qui peut causer des biais importants au niveau de l’entraînement des algorithmes.</p>
+<ul class="simple">
+<li><p>Technique de suréchantillonnnage des minorités synthétiques (<em><strong>Synthetic Minority Oversampling Technique</strong></em> ou <a class="reference external" href="https://www.rdocumentation.org/packages/smotefamily/versions/1.3.1/topics/SMOTE">SMOTE</a> en anglais) : c’est une technique sophistiquée qui ne se contente pas de juste cdupliquer des cas de défaut mais utilise les caractéristiques des plus proches voisins des cas de défaut de paiement pour créer de nouveaux cas de défaut synthétiques. Cette méthode bien qu’utilisant des algorithmes hyper-sophistiqués présente le risque que les voisins les plus proches des cas de défaut ne soient pas en réalité des cas de défaut ce qui peut entraîner des erreurs de modélisation.</p></li>
+</ul>
+<p><em>N.B : Les méthodes de rééchantillonnage des données pour résoudre le problème de déséquilibre de classe doivent être appliquées uniquement aux données d’entraînement et NON aux données de test</em></p>
+</section>
+</section>
+<section id="modelisation">
+<h3><strong>Modélisation</strong><a class="headerlink" href="#modelisation" title="Permalink to this headline">#</a></h3>
+<section id="choix-de-la-metrique-d-evaluation-de-performance-du-modele">
+<h4><strong>Choix de la métrique d’évaluation de performance du modèle</strong><a class="headerlink" href="#choix-de-la-metrique-d-evaluation-de-performance-du-modele" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Quelle métrique choisir pour évaluer la performance des modèles ?</p></li>
+</ul>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/confusion.png"><img alt="_images/confusion.png" src="_images/confusion.png" style="width: 1051.0px; height: 745.0px;" /></a>
+</figure>
+<p>La matrice de confusion est une matrice carrée qui rapporte le nombre de vrais positifs (<em>True Positives</em> ou TP), vrais négatifs (<em>True Négatives</em> ou TN), faux positifs (<em>False Positive</em> ou FP) et faux négatifs (<em>False Negatives</em> ou FN).</p>
+<p>Dans notre cas, la classe positive est 1 : le client est en défaut de paiement et la classe négative est 0 : le client n’est pas en défaut de paiement.</p>
+<ul class="simple">
+<li><p><strong>TP</strong> : le client est en défaut de paiement et le modèle prédit qu’il est en défaut de paiement ;</p></li>
+<li><p><strong>TN</strong> : le client n’est pas en défaut de paiement et le modèle prédit qu’il n’est pas en défaut de paiement ;</p></li>
+</ul>
+<p>Les 2 cas ci-dessus (TP et TN) sont les bons cas. Mais FP et FN sont les mauvais cas :</p>
+<ul class="simple">
+<li><p><strong>FP</strong> : le client n’est pas en défaut de paiement mais le modèle prédit qu’il est en défaut de paiement ;</p></li>
+<li><p><strong>FN</strong> : le client est en défaut de paiement mais le modèle prédit qu’il n’est pas en défaut de paiement.</p></li>
+</ul>
+<p>A partir de la matrice de confusion, vous pouvez calculer certaines métriques pour évaluer la performance du modèle.</p>
+<ul class="simple">
+<li><p>La précision de la classification (<em><strong>Accuracy</strong></em> en anglais) est le pourcentage d’instances correctement classifiées, c’est-à-dire la somme du nombre de vrais négatifs et de vrais positifs divisée par le nombre total des observations. Elles se calcule donc par la formule ci-dessous :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Accuracy = \frac{TN + TP}{(TN + FN + FP + TP)}\]</div>
+<ul class="simple">
+<li><p>La sensibilité du modèle (<em><strong>Sensitivity</strong></em> en anglais) se calcule par la formule ci-dessous : $<span class="math notranslate nohighlight">\(Sensitivity = \frac{TP}{(FN + TP)}\)</span>$</p></li>
+</ul>
+<p>Dans le cas présent, la sensibilité se traduit par le pourcentage de clients en défaut de paiement (classe positive) qui ont été classifié comme tel par le modèle. Une sensibilité élevée est meilleure.</p>
+<ul class="simple">
+<li><p>La spécificité du modèle (<em><strong>Specificity</strong></em> en anglais) se calcule par la formule ci-dessous : $<span class="math notranslate nohighlight">\(Specificity = \frac{TN}{(TN + FP)}\)</span>$</p></li>
+</ul>
+<p>Ici, la spécificité est le pourcentage de clients qui ne sont pas en défauts de paiement (classe négative) et qui ont été classififié comme tel par le modèle.</p>
+<p>Une spécificité élevée est meilleure. Mais il faudra un compromis entre la sensibilité du modèle et la spécificité car l’amélioration  de la sensibilité diminue la spécificité et l’amélioration de la spécificité diminue la sensibilité.</p>
+<p>Il faut faire attention à la précision globale. Une forte précision globale ne signifie pas forcément que le modèle est performant. Le choix de la métrique pour quantifier la performance du modèle doit se faire en fonction du contexte de l’étude, c’est-à-dire de la problématique qu’on veut résoudre.</p>
+</section>
+<section id="modele-de-regression-logistique">
+<h4><strong>Modèle de Régression logistique</strong><a class="headerlink" href="#modele-de-regression-logistique" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Création  d&#39;une fonction de construction d&#39;un modèle de régression logistique</span>
+
+<span class="n">log_modeling</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">train</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">model</span> <span class="o">&lt;-</span> <span class="n">glm</span><span class="p">(</span><span class="n">loan_status</span> <span class="o">~</span> <span class="o">.</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s1">&#39;binomial&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">train</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="construction-et-evaluons-un-modele-de-regression-logistique-en-utilisant-l-ensemble-train-set">
+<h4><strong>Construction et évaluons un modèle de régression logistique en utilisant l’ensemble</strong> *<strong>train_set</strong><a class="headerlink" href="#construction-et-evaluons-un-modele-de-regression-logistique-en-utilisant-l-ensemble-train-set" title="Permalink to this headline">#</a></h4>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/glm.PNG"><img alt="_images/glm.PNG" src="_images/glm.PNG" style="width: 582.0px; height: 733.0px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/seuil1.png"><img alt="_images/seuil1.png" src="_images/seuil1.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+</section>
+<section id="courbe-roc">
+<h4><strong>Courbe ROC</strong><a class="headerlink" href="#courbe-roc" title="Permalink to this headline">#</a></h4>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/roc1.png"><img alt="_images/roc1.png" src="_images/roc1.png" style="width: 720.0px; height: 480.0px;" /></a>
+</figure>
+</section>
+<section id="sauvegarde-des-modeles">
+<h4><strong>Sauvegarde des modèles</strong><a class="headerlink" href="#sauvegarde-des-modeles" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sauvegarde du meilleur modèle</span>
+
+<span class="n">saveRDS</span><span class="p">(</span><span class="n">log_model_ros</span><span class="p">,</span> <span class="s2">&quot;credit_scoring_final_model.rds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="partie2-integrationt-dans-shinydashbord-du-modele-de-machine-learning-pour-la-prediction-du-risque-de-credit-bancaire">
+<h2>Partie2 : INTEGRATIONT DANS SHINYDASHBORD DU MODELE DE MACHINE LEARNING POUR LA PREDICTION DU RISQUE DE CREDIT BANCAIRE<a class="headerlink" href="#partie2-integrationt-dans-shinydashbord-du-modele-de-machine-learning-pour-la-prediction-du-risque-de-credit-bancaire" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Integration d&#39;un modele de Machine Learning dans R Shiny : Cas de la modelisation du risque de credit
+
+library(shiny)
+library(shinydashboard)
+
+model &lt;- readRDS(&#39;credit_scoring_rf_model.rds&#39;)
+
+ui &lt;- dashboardPage(
+       dashboardHeader(
+              title= div(h3(&#39;Credit Scoring&#39;, style=&quot;margin: 0;&quot;), h4(&#39;by Roland MONDJEHI&#39;, style=&quot;margin: 0;&quot;))
+
+       ), 
+       
+       dashboardSidebar(), 
+       
+       dashboardBody(
+              
+              tabItem(
+                     tabName = &quot;features&quot;,
+                     fluidRow(box(valueBoxOutput(&quot;score_prediction&quot;)),
+                              box(numericInput(&quot;var1&quot;, label = &quot;Age du demandeur de credit&quot;, 
+                                               value = 20, min = 18))),
+                     
+                     fluidRow(box(numericInput(&quot;var2&quot;, label = &quot;Revenu annuel demandeur de credit&quot;, 
+                                               value = 10000, min = 0)),
+                              box(selectInput(&quot;var3&quot;, 
+                                              label = &quot;Propriété immobilière : (MORTGAGE : hypothèque, OWN : propriétaire, RENT : Locataire, OTHER : Autres cas)&quot;, 
+                                              choices = c(&#39;MORTGAGE&#39;, &#39;OWN&#39;, &#39;RENT&#39;, &#39;OTHER&#39;)))),
+                     
+                     fluidRow(box(numericInput(&quot;var4&quot;, 
+                                               label = &quot;Depuis quand le demandeur est-il en activité professionnelle ? (Durée en nombre d&#39;années)&quot;, 
+                                               value = 3, min = 0)),
+                              box(selectInput(&quot;var5&quot;, 
+                                              label = &quot;Motif du prêt : (DEBTCONSOLIDATION : Rachat d&#39;un crédit, HOMEIMPROVEMENT : Travaux de rénovation immobilière, VENTURE : Business)&quot;, 
+                                              choices = c(&#39;DEBTCONSOLIDATION&#39;, &#39;EDUCATION&#39;, &#39;HOMEIMPROVEMENT&#39;, &#39;MEDICAL&#39;, &#39;PERSONAL&#39;, &#39;VENTURE&#39;))),),
+                     fluidRow(box(selectInput(&quot;var6&quot;, 
+                                              label = &quot;Catégorie du crédit&quot;, 
+                                              choices = c(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;))),
+                              box(numericInput(&quot;var7&quot;, 
+                                               label = &quot;Montant du crédit&quot;, 
+                                               value = 2000, min = 0))),
+                     
+                     fluidRow(box(numericInput(&quot;var8&quot;, 
+                                               label = &quot;Taux d&#39;intéret du crédit (en %)&quot;, 
+                                               value = 3.5, min = 0)),
+                              box(numericInput(&quot;var9&quot;, 
+                                               label = &quot;Ratio Dette/Revenu du demandeur de crédit (valeur décimale entre 0 et 1)&quot;, 
+                                               value = 0.1, min = 0, max = 1))),
+                     
+                     fluidRow(box(selectInput(&quot;var10&quot;, 
+                                              label = &quot;Est-ce que le demandeur de credit est à découvert bancaire ? : (Y : Oui, N : Non):&quot;, 
+                                              choices = c(&#39;Y&#39;, &#39;N&#39;))),
+                              box(numericInput(&quot;var11&quot;, 
+                                               label = &quot;Echéance des crédits en cours (en nombre d&#39;années)&quot;, 
+                                               value = 5, min = 0)))
+                     
+              )
+              
+       )
+       
+)
+
+server &lt;- function(input, output) {
+       
+       prediction &lt;- reactive({
+              predict(
+                     model,
+                     data.frame(
+                            &quot;person_age&quot; = input$var1,
+                            &quot;person_income&quot; = input$var2,
+                            &quot;person_home_ownership&quot; = input$var3,
+                            &quot;person_emp_length&quot; = input$var4,
+                            &quot;loan_intent&quot; = input$var5,
+                            &quot;loan_grade&quot; = input$var6,
+                            &quot;loan_amnt&quot; = input$var7,
+                            &quot;loan_int_rate&quot; = input$var8,
+                            &quot;loan_percent_income&quot; = input$var9,
+                            &quot;cb_person_default_on_file&quot; = input$var10,
+                            &quot;cb_person_cred_hist_length&quot; = input$var11
+                     ),
+                     type = &#39;raw&#39;
+              )
+       })
+       
+       prediction_label &lt;- reactive({
+              ifelse(prediction() == &quot;0&quot;, &quot;Eligible au Crédit&quot;, &quot;Non Eligible au Crédit&quot;)
+       })
+       
+       prediction_prob &lt;- reactive({
+              predict(
+                     model,
+                     data.frame(
+                            &quot;person_age&quot; = input$var1,
+                            &quot;person_income&quot; = input$var2,
+                            &quot;person_home_ownership&quot; = input$var3,
+                            &quot;person_emp_length&quot; = input$var4,
+                            &quot;loan_intent&quot; = input$var5,
+                            &quot;loan_grade&quot; = input$var6,
+                            &quot;loan_amnt&quot; = input$var7,
+                            &quot;loan_int_rate&quot; = input$var8,
+                            &quot;loan_percent_income&quot; = input$var9,
+                            &quot;cb_person_default_on_file&quot; = input$var10,
+                            &quot;cb_person_cred_hist_length&quot; = input$var11
+                     ),
+                     type = &quot;prob&quot;
+              ) 
+       })
+       
+       prediction_color &lt;- reactive({
+              ifelse(prediction() == &quot;0&quot;, &quot;green&quot;, &quot;red&quot;)
+       })
+       
+       output$score_prediction &lt;- renderValueBox({
+              
+              valueBox(
+                     value = paste(round(100*prediction_prob()$`1`, 0), &quot;%&quot;),
+                     subtitle = prediction_label(),
+                     color = prediction_color(),
+                     icon = icon(&quot;hand-holding-usd&quot;)
+              )                     
+              
+       })
+       
+}
+
+
+shinyApp(ui, server)
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/img_app1.PNG"><img alt="_images/img_app1.PNG" src="_images/img_app1.PNG" style="width: 727.5px; height: 351.0px;" /></a>
+</figure>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/img_app2.PNG"><img alt="_images/img_app2.PNG" src="_images/img_app2.PNG" style="width: 727.0px; height: 343.5px;" /></a>
+</figure>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h1>
+<p>A travers ce projet, je suis capable :</p>
+<ul class="simple">
+<li><p><strong>d’analyser, de nettoyer et de préparer les données pour modéliser la probabilité de défaut de paiement</strong> ;</p></li>
+<li><p><strong>d’analyser la performance des différents modèles construits et de déterminer et de déterminer le seuil optimal pour la prédiction des résultats de la variable cible</strong> ;</p></li>
+<li><p><strong>de comparer plusieurs modèles en utilisant une métrique comme l’AUC</strong> ;</p></li>
+<li><p><strong>de bien structurer mon code R en créant des fonctions qui rendent mon flux de travail beaucoup plus clair et digeste</strong>.</p></li>
+</ul>
+<p>La modélisation du risque de crédit par les méthodes d’apprentissage automatique est un domaine passionnant et il reste encore beaucoup de choses à apprendre.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lecture03.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>Projet : Manipulationn de Base de données NoSQL</strong></p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Roland MONDJEHI<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

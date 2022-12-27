@@ -1,0 +1,2371 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Analyse des données du jeu de donnnées des voitures d’occasion &#8212; Data Scientist</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Projet Complet de Data Science" href="lecture02.html" />
+    <link rel="prev" title="Portfolio" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Scientist</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Portfolio
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Analyse des données du jeu de donnnées des voitures d’occasion
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture02.html">
+   <strong>
+    Projet Complet de Data Science
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture03.html">
+   <strong>
+    Projet : Manipulationn de Base de données NoSQL
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture04.html">
+   ANALYSE CREDIT-RISQUE-MODELISATION AVEC R
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://colab.research.google.com/github/aigleroyale/portline/blob/main/lecture01.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/aigleroyale/portline"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lecture01.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quelques-analyses-generales-rencontrees-lors-du-nettoyage-des-donnees">
+   <strong>
+    Quelques analyses générales rencontrées lors du nettoyage des données
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repartition-des-vehicules-en-fonction-de-l-annee-d-immatriculation">
+     <strong>
+      Répartition des véhicules en fonction de l’année d’immatriculation
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variation-de-la-fourchette-de-prix-selon-le-type-de-vehicule">
+     <strong>
+      Variation de la fourchette de prix selon le type de véhicule
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nombre-total-de-vehicules-par-type-disponibles-a-la-vente-sur-ebay">
+     <strong>
+      Nombre total de véhicules par type disponibles à la vente sur ebay
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prix-moyen-d-un-vehicule-par-type-de-carburant-et-par-type-de-boite-de-vitesse">
+     <strong>
+      Prix moyen d’un véhicule par type de carburant et par type de boîte de vitesse
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#puissance-moyenne-d-un-vehicule-par-type-de-vehicule-et-type-de-boite-de-vitesses">
+     <strong>
+      Puissance moyenne d’un véhicule par type de véhicule et type de boîte de vitesses
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prix-moyen-d-un-vehicule-par-marque-ainsi-que-par-type-de-vehicule">
+     <strong>
+      Prix moyen d’un véhicule par marque ainsi que par type de véhicule
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Analyse des données du jeu de donnnées des voitures d’occasion   </h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quelques-analyses-generales-rencontrees-lors-du-nettoyage-des-donnees">
+   <strong>
+    Quelques analyses générales rencontrées lors du nettoyage des données
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repartition-des-vehicules-en-fonction-de-l-annee-d-immatriculation">
+     <strong>
+      Répartition des véhicules en fonction de l’année d’immatriculation
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variation-de-la-fourchette-de-prix-selon-le-type-de-vehicule">
+     <strong>
+      Variation de la fourchette de prix selon le type de véhicule
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nombre-total-de-vehicules-par-type-disponibles-a-la-vente-sur-ebay">
+     <strong>
+      Nombre total de véhicules par type disponibles à la vente sur ebay
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prix-moyen-d-un-vehicule-par-type-de-carburant-et-par-type-de-boite-de-vitesse">
+     <strong>
+      Prix moyen d’un véhicule par type de carburant et par type de boîte de vitesse
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#puissance-moyenne-d-un-vehicule-par-type-de-vehicule-et-type-de-boite-de-vitesses">
+     <strong>
+      Puissance moyenne d’un véhicule par type de véhicule et type de boîte de vitesses
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prix-moyen-d-un-vehicule-par-marque-ainsi-que-par-type-de-vehicule">
+     <strong>
+      Prix moyen d’un véhicule par marque ainsi que par type de véhicule
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="analyse-des-donnees-du-jeu-de-donnnees-des-voitures-d-occasion-license">
+<h1><strong>Analyse des données du jeu de donnnées des voitures d’occasion   <a class="reference external" href="https://opensource.org/licenses/MIT"><img alt="license" src="https://img.shields.io/github/license/ajaymache/travis-ci-with-github.svg" /></a></strong><a class="headerlink" href="#analyse-des-donnees-du-jeu-de-donnnees-des-voitures-d-occasion-license" title="Permalink to this headline">#</a></h1>
+<p>L’analyse des données ou parfois appelée analyse exploratoire des données (EDA) est l’une des composantes essentielles de la science des données. C’est aussi la partie sur laquelle les data scientists et les data analysts passent la majorité de leur temps ce qui la rend extrêmement importante dans le domaine de la data science.</p>
+<p>Ce projet démontre certaines méthodes et techniques courantes d’analyse de données exploratoires en utilisant Python.</p>
+<p>À des fins d’illustration, l’ ensemble du jeu de données de voitures d’occasion a été extrait de <strong><a class="reference external" href="https://www.kaggle.com/orgesleka/used-cars-database">kaggle</a></strong>, car il s’agit de l’un des ensembles de données idéaux pour effectuer de l’ EDA et faire un pas vers le domaine le plus étonnant et le plus intéressant de la science des données.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Traitement</span> <span class="pre">des</span> <span class="pre">données</span></code>
+<code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Nettoyage</span> <span class="pre">des</span> <span class="pre">données</span></code>
+<code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">Exploration</span> <span class="pre">des</span> <span class="pre">données</span></code></p>
+<p>afin de les rendre cohérentes pour l’analyse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># importation des librairies
+
+import os
+import subprocess
+import stat
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from datetime import datetime
+sns.set_context(&quot;poster&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># importation des données
+
+abs_path = os.getcwd()
+raw_data_path = abs_path + &quot;/RawData/autos.csv&quot;
+df = pd.read_csv(raw_data_path, encoding=&quot;latin-1&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dateCrawled</th>
+      <th>name</th>
+      <th>seller</th>
+      <th>offerType</th>
+      <th>price</th>
+      <th>abtest</th>
+      <th>vehicleType</th>
+      <th>yearOfRegistration</th>
+      <th>gearbox</th>
+      <th>powerPS</th>
+      <th>model</th>
+      <th>kilometer</th>
+      <th>monthOfRegistration</th>
+      <th>fuelType</th>
+      <th>brand</th>
+      <th>notRepairedDamage</th>
+      <th>dateCreated</th>
+      <th>nrOfPictures</th>
+      <th>postalCode</th>
+      <th>lastSeen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2016-03-24 11:52:17</td>
+      <td>Golf_3_1.6</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>480</td>
+      <td>test</td>
+      <td>NaN</td>
+      <td>1993</td>
+      <td>manuell</td>
+      <td>0</td>
+      <td>golf</td>
+      <td>150000</td>
+      <td>0</td>
+      <td>benzin</td>
+      <td>volkswagen</td>
+      <td>NaN</td>
+      <td>2016-03-24 00:00:00</td>
+      <td>0</td>
+      <td>70435</td>
+      <td>2016-04-07 03:16:57</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016-03-24 10:58:45</td>
+      <td>A5_Sportback_2.7_Tdi</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>18300</td>
+      <td>test</td>
+      <td>coupe</td>
+      <td>2011</td>
+      <td>manuell</td>
+      <td>190</td>
+      <td>NaN</td>
+      <td>125000</td>
+      <td>5</td>
+      <td>diesel</td>
+      <td>audi</td>
+      <td>ja</td>
+      <td>2016-03-24 00:00:00</td>
+      <td>0</td>
+      <td>66954</td>
+      <td>2016-04-07 01:46:50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2016-03-14 12:52:21</td>
+      <td>Jeep_Grand_Cherokee_"Overland"</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>9800</td>
+      <td>test</td>
+      <td>suv</td>
+      <td>2004</td>
+      <td>automatik</td>
+      <td>163</td>
+      <td>grand</td>
+      <td>125000</td>
+      <td>8</td>
+      <td>diesel</td>
+      <td>jeep</td>
+      <td>NaN</td>
+      <td>2016-03-14 00:00:00</td>
+      <td>0</td>
+      <td>90480</td>
+      <td>2016-04-05 12:47:46</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2016-03-17 16:54:04</td>
+      <td>GOLF_4_1_4__3TÜRER</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1500</td>
+      <td>test</td>
+      <td>kleinwagen</td>
+      <td>2001</td>
+      <td>manuell</td>
+      <td>75</td>
+      <td>golf</td>
+      <td>150000</td>
+      <td>6</td>
+      <td>benzin</td>
+      <td>volkswagen</td>
+      <td>nein</td>
+      <td>2016-03-17 00:00:00</td>
+      <td>0</td>
+      <td>91074</td>
+      <td>2016-03-17 17:40:17</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2016-03-31 17:25:20</td>
+      <td>Skoda_Fabia_1.4_TDI_PD_Classic</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>3600</td>
+      <td>test</td>
+      <td>kleinwagen</td>
+      <td>2008</td>
+      <td>manuell</td>
+      <td>69</td>
+      <td>fabia</td>
+      <td>90000</td>
+      <td>7</td>
+      <td>diesel</td>
+      <td>skoda</td>
+      <td>nein</td>
+      <td>2016-03-31 00:00:00</td>
+      <td>0</td>
+      <td>60437</td>
+      <td>2016-04-06 10:17:21</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.info()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 371528 entries, 0 to 371527
+Data columns (total 20 columns):
+ #   Column               Non-Null Count   Dtype 
+---  ------               --------------   ----- 
+ 0   dateCrawled          371528 non-null  object
+ 1   name                 371528 non-null  object
+ 2   seller               371528 non-null  object
+ 3   offerType            371528 non-null  object
+ 4   price                371528 non-null  int64 
+ 5   abtest               371528 non-null  object
+ 6   vehicleType          333659 non-null  object
+ 7   yearOfRegistration   371528 non-null  int64 
+ 8   gearbox              351319 non-null  object
+ 9   powerPS              371528 non-null  int64 
+ 10  model                351044 non-null  object
+ 11  kilometer            371528 non-null  int64 
+ 12  monthOfRegistration  371528 non-null  int64 
+ 13  fuelType             338142 non-null  object
+ 14  brand                371528 non-null  object
+ 15  notRepairedDamage    299468 non-null  object
+ 16  dateCreated          371528 non-null  object
+ 17  nrOfPictures         371528 non-null  int64 
+ 18  postalCode           371528 non-null  int64 
+ 19  lastSeen             371528 non-null  object
+dtypes: int64(7), object(13)
+memory usage: 56.7+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.isnull().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dateCrawled                0
+name                       0
+seller                     0
+offerType                  0
+price                      0
+abtest                     0
+vehicleType            37869
+yearOfRegistration         0
+gearbox                20209
+powerPS                    0
+model                  20484
+kilometer                  0
+monthOfRegistration        0
+fuelType               33386
+brand                      0
+notRepairedDamage      72060
+dateCreated                0
+nrOfPictures               0
+postalCode                 0
+lastSeen                   0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.isnull().sum().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>184008
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.isnull().sum().sum()/df.shape[0]*100
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.527357292047974
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;vehicleType&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;coupe&#39;, &#39;suv&#39;, &#39;kleinwagen&#39;, &#39;limousine&#39;, &#39;cabrio&#39;, &#39;bus&#39;,
+       &#39;kombi&#39;, &#39;andere&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;vehicleType&quot;].value_counts(dropna=False, normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>limousine     0.258107
+kleinwagen    0.215389
+kombi         0.181854
+NaN           0.101928
+bus           0.081289
+cabrio        0.061632
+coupe         0.051181
+suv           0.039585
+andere        0.009036
+Name: vehicleType, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;vehicleType&quot;].fillna(&quot;Other&quot;, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;vehicleType&quot;].value_counts(dropna=False, normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>limousine     0.258107
+kleinwagen    0.215389
+kombi         0.181854
+Other         0.101928
+bus           0.081289
+cabrio        0.061632
+coupe         0.051181
+suv           0.039585
+andere        0.009036
+Name: vehicleType, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;gearbox&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;manuell&#39;, &#39;automatik&#39;, nan], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;gearbox&quot;].value_counts(dropna=False,  normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>manuell      0.738071
+automatik    0.207535
+NaN          0.054394
+Name: gearbox, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;gearbox&quot;].fillna(&quot;Unspecified&quot;, inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;model&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;golf&#39;, nan, &#39;grand&#39;, &#39;fabia&#39;, &#39;3er&#39;, &#39;2_reihe&#39;, &#39;andere&#39;, &#39;c_max&#39;,
+       &#39;3_reihe&#39;, &#39;passat&#39;, &#39;navara&#39;, &#39;ka&#39;, &#39;polo&#39;, &#39;twingo&#39;, &#39;a_klasse&#39;,
+       &#39;scirocco&#39;, &#39;5er&#39;, &#39;meriva&#39;, &#39;arosa&#39;, &#39;c4&#39;, &#39;civic&#39;, &#39;transporter&#39;,
+       &#39;punto&#39;, &#39;e_klasse&#39;, &#39;clio&#39;, &#39;kadett&#39;, &#39;kangoo&#39;, &#39;corsa&#39;, &#39;one&#39;,
+       &#39;fortwo&#39;, &#39;1er&#39;, &#39;b_klasse&#39;, &#39;signum&#39;, &#39;astra&#39;, &#39;a8&#39;, &#39;jetta&#39;,
+       &#39;fiesta&#39;, &#39;c_klasse&#39;, &#39;micra&#39;, &#39;vito&#39;, &#39;sprinter&#39;, &#39;156&#39;, &#39;escort&#39;,
+       &#39;forester&#39;, &#39;xc_reihe&#39;, &#39;scenic&#39;, &#39;a4&#39;, &#39;a1&#39;, &#39;insignia&#39;, &#39;combo&#39;,
+       &#39;focus&#39;, &#39;tt&#39;, &#39;a6&#39;, &#39;jazz&#39;, &#39;omega&#39;, &#39;slk&#39;, &#39;7er&#39;, &#39;80&#39;, &#39;147&#39;,
+       &#39;glk&#39;, &#39;100&#39;, &#39;z_reihe&#39;, &#39;sportage&#39;, &#39;sorento&#39;, &#39;v40&#39;, &#39;ibiza&#39;,
+       &#39;mustang&#39;, &#39;eos&#39;, &#39;touran&#39;, &#39;getz&#39;, &#39;a3&#39;, &#39;almera&#39;, &#39;megane&#39;,
+       &#39;lupo&#39;, &#39;r19&#39;, &#39;zafira&#39;, &#39;caddy&#39;, &#39;mondeo&#39;, &#39;cordoba&#39;, &#39;colt&#39;,
+       &#39;impreza&#39;, &#39;vectra&#39;, &#39;berlingo&#39;, &#39;m_klasse&#39;, &#39;tiguan&#39;, &#39;i_reihe&#39;,
+       &#39;espace&#39;, &#39;sharan&#39;, &#39;6_reihe&#39;, &#39;panda&#39;, &#39;up&#39;, &#39;seicento&#39;, &#39;ceed&#39;,
+       &#39;5_reihe&#39;, &#39;yeti&#39;, &#39;octavia&#39;, &#39;mii&#39;, &#39;rx_reihe&#39;, &#39;6er&#39;, &#39;modus&#39;,
+       &#39;fox&#39;, &#39;matiz&#39;, &#39;beetle&#39;, &#39;c1&#39;, &#39;rio&#39;, &#39;touareg&#39;, &#39;logan&#39;,
+       &#39;spider&#39;, &#39;cuore&#39;, &#39;s_max&#39;, &#39;a2&#39;, &#39;x_reihe&#39;, &#39;a5&#39;, &#39;galaxy&#39;, &#39;c3&#39;,
+       &#39;viano&#39;, &#39;s_klasse&#39;, &#39;1_reihe&#39;, &#39;avensis&#39;, &#39;sl&#39;, &#39;roomster&#39;, &#39;q5&#39;,
+       &#39;kaefer&#39;, &#39;santa&#39;, &#39;cooper&#39;, &#39;leon&#39;, &#39;4_reihe&#39;, &#39;500&#39;, &#39;laguna&#39;,
+       &#39;ptcruiser&#39;, &#39;clk&#39;, &#39;primera&#39;, &#39;exeo&#39;, &#39;159&#39;, &#39;transit&#39;, &#39;juke&#39;,
+       &#39;qashqai&#39;, &#39;carisma&#39;, &#39;accord&#39;, &#39;corolla&#39;, &#39;lanos&#39;, &#39;phaeton&#39;,
+       &#39;boxster&#39;, &#39;verso&#39;, &#39;swift&#39;, &#39;rav&#39;, &#39;kuga&#39;, &#39;picanto&#39;, &#39;kalos&#39;,
+       &#39;superb&#39;, &#39;stilo&#39;, &#39;alhambra&#39;, &#39;911&#39;, &#39;mx_reihe&#39;, &#39;m_reihe&#39;,
+       &#39;roadster&#39;, &#39;ypsilon&#39;, &#39;cayenne&#39;, &#39;galant&#39;, &#39;justy&#39;, &#39;90&#39;,
+       &#39;sirion&#39;, &#39;crossfire&#39;, &#39;agila&#39;, &#39;duster&#39;, &#39;cr_reihe&#39;, &#39;v50&#39;,
+       &#39;discovery&#39;, &#39;c_reihe&#39;, &#39;v_klasse&#39;, &#39;yaris&#39;, &#39;c5&#39;, &#39;aygo&#39;, &#39;cc&#39;,
+       &#39;carnival&#39;, &#39;fusion&#39;, &#39;bora&#39;, &#39;forfour&#39;, &#39;cl&#39;, &#39;tigra&#39;, &#39;300c&#39;,
+       &#39;q3&#39;, &#39;spark&#39;, &#39;v70&#39;, &#39;x_type&#39;, &#39;ducato&#39;, &#39;s_type&#39;, &#39;x_trail&#39;,
+       &#39;toledo&#39;, &#39;altea&#39;, &#39;voyager&#39;, &#39;calibra&#39;, &#39;bravo&#39;, &#39;range_rover&#39;,
+       &#39;antara&#39;, &#39;tucson&#39;, &#39;q7&#39;, &#39;citigo&#39;, &#39;jimny&#39;, &#39;cx_reihe&#39;,
+       &#39;wrangler&#39;, &#39;lybra&#39;, &#39;range_rover_sport&#39;, &#39;lancer&#39;, &#39;freelander&#39;,
+       &#39;captiva&#39;, &#39;c2&#39;, &#39;range_rover_evoque&#39;, &#39;sandero&#39;, &#39;note&#39;, &#39;900&#39;,
+       &#39;defender&#39;, &#39;cherokee&#39;, &#39;clubman&#39;, &#39;samara&#39;, &#39;601&#39;, &#39;legacy&#39;,
+       &#39;pajero&#39;, &#39;auris&#39;, &#39;niva&#39;, &#39;s60&#39;, &#39;nubira&#39;, &#39;vivaro&#39;, &#39;g_klasse&#39;,
+       &#39;lodgy&#39;, &#39;850&#39;, &#39;serie_2&#39;, &#39;charade&#39;, &#39;croma&#39;, &#39;outlander&#39;, &#39;gl&#39;,
+       &#39;doblo&#39;, &#39;musa&#39;, &#39;amarok&#39;, &#39;move&#39;, &#39;9000&#39;, &#39;v60&#39;, &#39;145&#39;, &#39;aveo&#39;,
+       &#39;200&#39;, &#39;b_max&#39;, &#39;delta&#39;, &#39;terios&#39;, &#39;rangerover&#39;, &#39;materia&#39;,
+       &#39;kalina&#39;, &#39;elefantino&#39;, &#39;i3&#39;, &#39;kappa&#39;, &#39;serie_3&#39;, &#39;serie_1&#39;,
+       &#39;discovery_sport&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;model&quot;].value_counts(dropna=False,  normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>golf               0.080936
+andere             0.071058
+3er                0.055358
+NaN                0.055134
+polo               0.035238
+                     ...   
+serie_2            0.000022
+rangerover         0.000016
+serie_3            0.000011
+serie_1            0.000005
+discovery_sport    0.000003
+Name: model, Length: 252, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;model&quot;].fillna(&quot;Other&quot;,inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;benzin&#39;, &#39;diesel&#39;, nan, &#39;lpg&#39;, &#39;andere&#39;, &#39;hybrid&#39;, &#39;cng&#39;,
+       &#39;elektro&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].value_counts(dropna=False,  normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benzin     0.602531
+diesel     0.290008
+NaN        0.089861
+lpg        0.014475
+cng        0.001537
+hybrid     0.000748
+andere     0.000560
+elektro    0.000280
+Name: fuelType, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].fillna(&quot;other&quot;,inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].value_counts(dropna=False,  normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>benzin     0.602531
+diesel     0.290008
+other      0.089861
+lpg        0.014475
+cng        0.001537
+hybrid     0.000748
+andere     0.000560
+elektro    0.000280
+Name: fuelType, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;notRepairedDamage&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;ja&#39;, &#39;nein&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;notRepairedDamage&quot;].value_counts(dropna=False,  normalize=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nein    0.708377
+NaN     0.193956
+ja      0.097667
+Name: notRepairedDamage, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;notRepairedDamage&quot;].fillna(&quot;other&quot;,inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.isnull().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dateCrawled            0
+name                   0
+seller                 0
+offerType              0
+price                  0
+abtest                 0
+vehicleType            0
+yearOfRegistration     0
+gearbox                0
+powerPS                0
+model                  0
+kilometer              0
+monthOfRegistration    0
+fuelType               0
+brand                  0
+notRepairedDamage      0
+dateCreated            0
+nrOfPictures           0
+postalCode             0
+lastSeen               0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.duplicated().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mask = df.duplicated(keep=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[mask]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dateCrawled</th>
+      <th>name</th>
+      <th>seller</th>
+      <th>offerType</th>
+      <th>price</th>
+      <th>abtest</th>
+      <th>vehicleType</th>
+      <th>yearOfRegistration</th>
+      <th>gearbox</th>
+      <th>powerPS</th>
+      <th>model</th>
+      <th>kilometer</th>
+      <th>monthOfRegistration</th>
+      <th>fuelType</th>
+      <th>brand</th>
+      <th>notRepairedDamage</th>
+      <th>dateCreated</th>
+      <th>nrOfPictures</th>
+      <th>postalCode</th>
+      <th>lastSeen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>43501</th>
+      <td>2016-03-18 18:46:15</td>
+      <td>Volkswagen_Passat_Variant_1.9_TDI_Highline</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1999</td>
+      <td>control</td>
+      <td>kombi</td>
+      <td>2001</td>
+      <td>manuell</td>
+      <td>131</td>
+      <td>passat</td>
+      <td>150000</td>
+      <td>7</td>
+      <td>diesel</td>
+      <td>volkswagen</td>
+      <td>nein</td>
+      <td>2016-03-18 00:00:00</td>
+      <td>0</td>
+      <td>36391</td>
+      <td>2016-03-18 18:46:15</td>
+    </tr>
+    <tr>
+      <th>92386</th>
+      <td>2016-03-08 18:42:48</td>
+      <td>Mercedes_Benz_CLK_Coupe_230_Kompressor_Sport</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1799</td>
+      <td>test</td>
+      <td>coupe</td>
+      <td>1999</td>
+      <td>automatik</td>
+      <td>193</td>
+      <td>clk</td>
+      <td>20000</td>
+      <td>7</td>
+      <td>benzin</td>
+      <td>mercedes_benz</td>
+      <td>nein</td>
+      <td>2016-03-08 00:00:00</td>
+      <td>0</td>
+      <td>89518</td>
+      <td>2016-03-09 09:46:57</td>
+    </tr>
+    <tr>
+      <th>95425</th>
+      <td>2016-03-28 00:56:10</td>
+      <td>Suzuki_Ignis</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1000</td>
+      <td>control</td>
+      <td>kleinwagen</td>
+      <td>2002</td>
+      <td>manuell</td>
+      <td>83</td>
+      <td>andere</td>
+      <td>150000</td>
+      <td>1</td>
+      <td>benzin</td>
+      <td>suzuki</td>
+      <td>nein</td>
+      <td>2016-03-28 00:00:00</td>
+      <td>0</td>
+      <td>66589</td>
+      <td>2016-03-28 08:46:21</td>
+    </tr>
+    <tr>
+      <th>179448</th>
+      <td>2016-03-08 18:42:48</td>
+      <td>Mercedes_Benz_CLK_Coupe_230_Kompressor_Sport</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1799</td>
+      <td>test</td>
+      <td>coupe</td>
+      <td>1999</td>
+      <td>automatik</td>
+      <td>193</td>
+      <td>clk</td>
+      <td>20000</td>
+      <td>7</td>
+      <td>benzin</td>
+      <td>mercedes_benz</td>
+      <td>nein</td>
+      <td>2016-03-08 00:00:00</td>
+      <td>0</td>
+      <td>89518</td>
+      <td>2016-03-09 09:46:57</td>
+    </tr>
+    <tr>
+      <th>196894</th>
+      <td>2016-04-03 09:01:15</td>
+      <td>Mercedes_Benz_CLK_320_W209</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>4699</td>
+      <td>test</td>
+      <td>coupe</td>
+      <td>2003</td>
+      <td>automatik</td>
+      <td>218</td>
+      <td>clk</td>
+      <td>125000</td>
+      <td>6</td>
+      <td>benzin</td>
+      <td>mercedes_benz</td>
+      <td>ja</td>
+      <td>2016-04-03 00:00:00</td>
+      <td>0</td>
+      <td>75196</td>
+      <td>2016-04-07 09:44:54</td>
+    </tr>
+    <tr>
+      <th>242556</th>
+      <td>2016-03-28 00:56:10</td>
+      <td>Suzuki_Ignis</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1000</td>
+      <td>control</td>
+      <td>kleinwagen</td>
+      <td>2002</td>
+      <td>manuell</td>
+      <td>83</td>
+      <td>andere</td>
+      <td>150000</td>
+      <td>1</td>
+      <td>benzin</td>
+      <td>suzuki</td>
+      <td>nein</td>
+      <td>2016-03-28 00:00:00</td>
+      <td>0</td>
+      <td>66589</td>
+      <td>2016-03-28 08:46:21</td>
+    </tr>
+    <tr>
+      <th>270719</th>
+      <td>2016-04-03 09:01:15</td>
+      <td>Mercedes_Benz_CLK_320_W209</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>4699</td>
+      <td>test</td>
+      <td>coupe</td>
+      <td>2003</td>
+      <td>automatik</td>
+      <td>218</td>
+      <td>clk</td>
+      <td>125000</td>
+      <td>6</td>
+      <td>benzin</td>
+      <td>mercedes_benz</td>
+      <td>ja</td>
+      <td>2016-04-03 00:00:00</td>
+      <td>0</td>
+      <td>75196</td>
+      <td>2016-04-07 09:44:54</td>
+    </tr>
+    <tr>
+      <th>341474</th>
+      <td>2016-03-18 18:46:15</td>
+      <td>Volkswagen_Passat_Variant_1.9_TDI_Highline</td>
+      <td>privat</td>
+      <td>Angebot</td>
+      <td>1999</td>
+      <td>control</td>
+      <td>kombi</td>
+      <td>2001</td>
+      <td>manuell</td>
+      <td>131</td>
+      <td>passat</td>
+      <td>150000</td>
+      <td>7</td>
+      <td>diesel</td>
+      <td>volkswagen</td>
+      <td>nein</td>
+      <td>2016-03-18 00:00:00</td>
+      <td>0</td>
+      <td>36391</td>
+      <td>2016-03-18 18:46:15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.drop_duplicates()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(371524, 20)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.duplicated().sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;yearOfRegistration&quot;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         1993
+1         2011
+2         2004
+3         2001
+4         2008
+          ... 
+371523    2005
+371524    2000
+371525    1996
+371526    2002
+371527    2013
+Name: yearOfRegistration, Length: 371524, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;yearOfRegistration&quot;].value_counts(ascending=False)[:50]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000    24551
+1999    22766
+2005    22316
+2006    20230
+2001    20217
+2003    19872
+2004    19746
+2002    19188
+1998    17951
+2007    17673
+2008    16175
+2009    15607
+1997    14706
+2010    12354
+2011    12068
+1996    10886
+2017    10546
+2016     9859
+1995     9658
+2012     9418
+2013     6157
+1994     4872
+2014     4802
+2018     3993
+1993     3469
+1992     3048
+2015     2982
+1990     2852
+1991     2810
+1989     1342
+1988      965
+1985      787
+1987      697
+1980      629
+1986      576
+1983      455
+1984      422
+1970      370
+1982      335
+1979      312
+1978      307
+1981      284
+1972      248
+1960      214
+1973      205
+1974      201
+1971      199
+1976      193
+1977      193
+1966      160
+Name: yearOfRegistration, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;yearOfRegistration&quot;].value_counts(ascending=True)[:50]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3500    1
+6200    1
+1001    1
+2290    1
+1911    1
+4800    1
+3800    1
+3700    1
+1255    1
+8500    1
+1200    1
+1925    1
+1400    1
+5900    1
+2900    1
+5300    1
+2066    1
+4100    1
+2200    1
+8200    1
+9450    1
+1688    1
+6500    1
+1039    1
+7100    1
+9229    1
+7800    1
+1602    1
+1920    1
+1915    1
+8455    1
+9996    1
+1253    1
+5600    1
+3200    1
+7777    1
+1919    1
+7500    2
+1300    2
+5555    2
+5911    2
+4500    2
+1927    2
+1944    2
+2800    2
+1940    2
+1600    2
+1946    2
+1928    2
+8888    2
+Name: yearOfRegistration, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df[(df[&quot;yearOfRegistration&quot;] &gt;= 1890) &amp; (df[&quot;yearOfRegistration&quot;] &lt;= 2016)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(20,8))
+sns.boxplot(x=&quot;vehicleType&quot;, y=&quot;price&quot;, data=df)
+ax.text(4,1.2*(10**9),&quot;De nombreuses valeurs aberrantes ont été supprimées dans le Boxplot.&quot;,fontsize=18,color=&quot;r&quot;,ha=&quot;center&quot;, va=&quot;center&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_38_0.png" src="_images/lecture01_38_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig(abs_path + &quot;/DataPreparation/price-vehicleType-boxplot.png&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+_median = df.groupby(&quot;vehicleType&quot;)[&quot;price&quot;].median()
+
+_quantile75 = df.groupby(&quot;vehicleType&quot;)[&quot;price&quot;].quantile(0.75)
+
+_quantile25 = df.groupby(&quot;vehicleType&quot;)[&quot;price&quot;].quantile(0.25)
+
+iqr = (_quantile75 - _quantile25)*1.5 + _median
+iqr
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vehicleType
+Other          3708.00
+andere         8429.50
+bus           13948.50
+cabrio        21400.00
+coupe         24300.00
+kleinwagen     5775.00
+kombi         13077.25
+limousine     12801.50
+suv           28800.00
+Name: price, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+df = df[((df[&quot;vehicleType&quot;] == &quot;andere&quot;) &amp; (df[&quot;price&quot;] &lt;= 8429)) |
+        ((df[&quot;vehicleType&quot;] == &quot;Other&quot;) &amp; (df[&quot;price&quot;] &lt;= 3708)) |
+        ((df[&quot;vehicleType&quot;] == &quot;suv&quot;) &amp; (df[&quot;price&quot;] &lt;= 28800)) |
+        ((df[&quot;vehicleType&quot;] == &quot;kombi&quot;) &amp; (df[&quot;price&quot;] &lt;= 13076)) |
+        ((df[&quot;vehicleType&quot;] == &quot;bus&quot;) &amp; (df[&quot;price&quot;] &lt;= 13948)) |
+        ((df[&quot;vehicleType&quot;] == &quot;cabrio&quot;) &amp; (df[&quot;price&quot;] &lt;= 21400)) |
+        ((df[&quot;vehicleType&quot;] == &quot;limousine&quot;) &amp; (df[&quot;price&quot;] &lt;= 12801)) |
+        ((df[&quot;vehicleType&quot;] == &quot;coupe&quot;) &amp; (df[&quot;price&quot;] &lt;= 24300)) |
+        ((df[&quot;vehicleType&quot;] == &quot;kleinwagen&quot;) &amp; (df[&quot;price&quot;] &lt;= 5775))]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;benzin&#39;, &#39;diesel&#39;, &#39;other&#39;, &#39;lpg&#39;, &#39;andere&#39;, &#39;hybrid&#39;, &#39;cng&#39;,
+       &#39;elektro&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;] = df[&quot;fuelType&quot;].map({&#39;benzin&#39;:&#39;Gasoline&#39;,&#39;diesel&#39;:&#39;Diesel&#39;,&#39;other&#39;:&#39;Other&#39;,&#39;lpg&#39;:&#39;Lpg&#39;, &#39;andere&#39;:&#39;Andere&#39;,&#39;hybrid&#39;:&#39;Hybrid&#39;,&#39;cng&#39;:&#39;Cng&#39;,&#39;elektro&#39;:&#39;Electric&#39;})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;fuelType&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Gasoline&#39;, &#39;Diesel&#39;, &#39;Other&#39;, &#39;Lpg&#39;, &#39;Andere&#39;, &#39;Hybrid&#39;, &#39;Cng&#39;,
+       &#39;Electric&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.columns
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;dateCrawled&#39;, &#39;name&#39;, &#39;seller&#39;, &#39;offerType&#39;, &#39;price&#39;, &#39;abtest&#39;,
+       &#39;vehicleType&#39;, &#39;yearOfRegistration&#39;, &#39;gearbox&#39;, &#39;powerPS&#39;, &#39;model&#39;,
+       &#39;kilometer&#39;, &#39;monthOfRegistration&#39;, &#39;fuelType&#39;, &#39;brand&#39;,
+       &#39;notRepairedDamage&#39;, &#39;dateCreated&#39;, &#39;nrOfPictures&#39;, &#39;postalCode&#39;,
+       &#39;lastSeen&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;nrOfPictures&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0], dtype=int64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>del df[&quot;nrOfPictures&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;yearOfCreation&quot;] = df[&#39;dateCreated&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date().strftime(&#39;%Y&#39;))
+
+df[&quot;yearCrawled&quot;] = df[&#39;dateCrawled&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date().strftime(&#39;%Y&#39;))
+
+df[&quot;monthOfCreation&quot;] = df[&#39;dateCreated&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date().strftime(&#39;%B&#39;))
+
+df[&quot;monthCrawled&quot;] = df[&#39;dateCrawled&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date().strftime(&#39;%B&#39;))
+
+from_date = df[&#39;dateCreated&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date())
+to_date = df[&#39;lastSeen&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).date())
+no_days = abs((to_date-from_date))
+no_days = (no_days / np.timedelta64(1, &#39;D&#39;)).astype(int)
+df[&quot;NoOfDaysOnline&quot;] = no_days
+
+hrs_from = df[&#39;dateCreated&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).time().strftime(&#39;%H&#39;))
+hrs_to = df[&#39;lastSeen&#39;].apply(lambda x: datetime.strptime(x,&#39;%Y-%m-%d %H:%M:%S&#39;).time().strftime(&#39;%H&#39;))
+total_hrs = (hrs_to.astype(int) - hrs_from.astype(int))
+df[&quot;NoOfHrsOnline&quot;] = total_hrs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;powerPS&quot;].value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       34842
+75      21934
+60      14445
+150     13508
+101     12372
+        ...  
+5815        1
+1596        1
+1506        1
+5809        1
+1241        1
+Name: powerPS, Length: 683, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;powerPS&quot;].isnull().value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    313683
+Name: powerPS, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;notRepairedDamage&quot;].unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;other&#39;, &#39;ja&#39;, &#39;nein&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;notRepairedDamage&quot;] = df[&quot;notRepairedDamage&quot;].map({&#39;other&#39;:&#39;Other&#39;,&#39;ja&#39;:&#39;Yes&#39;,&#39;nein&#39;:&#39;No&#39;})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;abtest&quot;].isnull().value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    313683
+Name: abtest, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;monthOfRegistration&quot;].replace([0,12],[1,11],inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&quot;yearsOld&quot;] = 2022 - df[&quot;yearOfRegistration&quot;]
+
+df[&quot;monthsOld&quot;] = 12 - df[&quot;monthOfRegistration&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>months = [&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;]
+df[&quot;monthOfRegistration&quot;].replace([1,2,3,4,5,6,7,8,9,10,11],months,inplace=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>path_to_file  = abs_path + &quot;/CleanData/cleaned_autos.csv&quot;
+df.to_csv(path_to_file,index=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>path_to_file  = abs_path + &quot;/CleanData/cleaned_autos.csv&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>path_to_file
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;C:\\Users\\33753\\Videos\\Pub\\fol/CleanData/cleaned_autos.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="quelques-analyses-generales-rencontrees-lors-du-nettoyage-des-donnees">
+<h2><strong>Quelques analyses générales rencontrées lors du nettoyage des données</strong><a class="headerlink" href="#quelques-analyses-generales-rencontrees-lors-du-nettoyage-des-donnees" title="Permalink to this headline">#</a></h2>
+<section id="repartition-des-vehicules-en-fonction-de-l-annee-d-immatriculation">
+<h3><strong>Répartition des véhicules en fonction de l’année d’immatriculation</strong><a class="headerlink" href="#repartition-des-vehicules-en-fonction-de-l-annee-d-immatriculation" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(12,10))
+sns.distplot(df[&quot;yearOfRegistration&quot;], color=&quot;#33cc33&quot;,kde=True, ax=ax)
+ax.set_title(&quot;Répartition des véhicules en fonction de l&#39;année d&#39;immatriculation&quot;, fontsize= 15)
+plt.ylabel(&quot;Densité&quot;, fontsize= 15)
+plt.xlabel(&quot;Année d&#39;immatriculation&quot;, fontsize= 15)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\33753\Anaconda3\lib\site-packages\seaborn\distributions.py:2619: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<img alt="_images/lecture01_62_1.png" src="_images/lecture01_62_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig(abs_path + &quot;/Plots/vehicle-distribution.png&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variation-de-la-fourchette-de-prix-selon-le-type-de-vehicule">
+<h3><strong>Variation de la fourchette de prix selon le type de véhicule</strong><a class="headerlink" href="#variation-de-la-fourchette-de-prix-selon-le-type-de-vehicule" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_style(&quot;whitegrid&quot;)
+fig, ax = plt.subplots(figsize=(20,10))
+sns.boxplot(x=&quot;vehicleType&quot;, y=&quot;price&quot;, data=df)
+ax.text(5.25,27000,&quot;Boxplot après suppression des valeurs aberrantes&quot;,fontsize=18,color=&quot;r&quot;,ha=&quot;center&quot;, va=&quot;center&quot;)
+ax.xaxis.set_label_text(&quot;Types de voiture&quot;,fontdict= {&#39;size&#39;:14})
+ax.yaxis.set_label_text(&quot;Fourchette de prix&quot;,fontdict= {&#39;size&#39;:14})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_65_0.png" src="_images/lecture01_65_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig(abs_path + &quot;/Plots/price-vehicleType-boxplot.png&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nombre-total-de-vehicules-par-type-disponibles-a-la-vente-sur-ebay">
+<h3><strong>Nombre total de véhicules par type disponibles à la vente sur ebay</strong><a class="headerlink" href="#nombre-total-de-vehicules-par-type-disponibles-a-la-vente-sur-ebay" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.set_style(&quot;white&quot;)
+g = sns.catplot(x=&quot;vehicleType&quot;, data=df, kind=&quot;count&quot;,
+                   palette=&quot;BuPu&quot;, height=10, aspect=1.5)
+g.ax.xaxis.set_label_text(&quot;Types de véhicule&quot;,fontdict= {&#39;size&#39;:16})
+g.ax.yaxis.set_label_text(&quot;Nombre total de véhicules à vendre&quot;, fontdict= {&#39;size&#39;:16})
+g.ax.set_title(&quot;Nombre total de véhicules en vente par type de véhicule&quot;,fontdict= {&#39;size&#39;:18})
+
+for p in g.ax.patches:
+    g.ax.annotate((p.get_height()), (p.get_x()+0.1, p.get_height()+500))
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_68_0.png" src="_images/lecture01_68_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g.savefig(abs_path + &quot;/Plots/count-vehicleType.png&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prix-moyen-d-un-vehicule-par-type-de-carburant-et-par-type-de-boite-de-vitesse">
+<h3><strong>Prix moyen d’un véhicule par type de carburant et par type de boîte de vitesse</strong><a class="headerlink" href="#prix-moyen-d-un-vehicule-par-type-de-carburant-et-par-type-de-boite-de-vitesse" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(figsize=(14,8))
+colors = [&quot;#00e600&quot;, &quot;#ff8c1a&quot;,&quot;#a180cc&quot;]
+sns.barplot(x=&quot;fuelType&quot;, y=&quot;price&quot;,hue=&quot;gearbox&quot;, palette=&quot;husl&quot;,data=df)
+ax.set_title(&quot;Prix moyen d&#39;un véhicule par type de carburant et par type de boîte de vitesse&quot;,fontdict= {&#39;size&#39;:18})
+ax.xaxis.set_label_text(&quot;Type de carburant&quot;,fontdict= {&#39;size&#39;:14})
+ax.yaxis.set_label_text(&quot;Prix moyen&quot;,fontdict= {&#39;size&#39;:14})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_71_0.png" src="_images/lecture01_71_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig((abs_path + &quot;/Plots/fueltype-vehicleType-price.png&quot;))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="puissance-moyenne-d-un-vehicule-par-type-de-vehicule-et-type-de-boite-de-vitesses">
+<h3><strong>Puissance moyenne d’un véhicule par type de véhicule et type de boîte de vitesses</strong><a class="headerlink" href="#puissance-moyenne-d-un-vehicule-par-type-de-vehicule-et-type-de-boite-de-vitesses" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>colors = [&quot;windows blue&quot;, &quot;amber&quot;, &quot;greyish&quot;, &quot;faded green&quot;, &quot;dusty purple&quot;]
+fig, ax = plt.subplots(figsize=(18,10))
+sns.set_palette(sns.xkcd_palette(colors))
+sns.barplot(x=&quot;vehicleType&quot;, y=&quot;powerPS&quot;,hue=&quot;gearbox&quot;,data=df)
+ax.set_title(&quot;Puissance moyenne d&#39;un véhicule par type de véhicule et type de boîte de vitesses&quot;,fontdict= {&#39;size&#39;:15})
+ax.xaxis.set_label_text(&quot;Type de véhicule&quot;,fontdict= {&#39;size&#39;:15})
+ax.yaxis.set_label_text(&quot;Puissance moyenne&quot;,fontdict= {&#39;size&#39;:15})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_74_0.png" src="_images/lecture01_74_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig((abs_path + &quot;/Plots/vehicletype-fueltype-power.png&quot;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trial = pd.DataFrame()
+for b in list(df[&quot;brand&quot;].unique()):
+    for v in list(df[&quot;vehicleType&quot;].unique()):
+        z = df[(df[&quot;brand&quot;] == b) &amp; (df[&quot;vehicleType&quot;] == v)][&quot;price&quot;].mean()
+        trial = trial.append(pd.DataFrame({&#39;brand&#39;:b , &#39;vehicleType&#39;:v , &#39;avgPrice&#39;:z}, index=[0]))
+trial = trial.reset_index()
+del trial[&quot;index&quot;]
+trial[&quot;avgPrice&quot;].fillna(0,inplace=True)
+trial[&quot;avgPrice&quot;].isnull().value_counts()
+trial[&quot;avgPrice&quot;] = trial[&quot;avgPrice&quot;].astype(int)
+trial.head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>brand</th>
+      <th>vehicleType</th>
+      <th>avgPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>volkswagen</td>
+      <td>Other</td>
+      <td>897</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>volkswagen</td>
+      <td>coupe</td>
+      <td>8014</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>volkswagen</td>
+      <td>suv</td>
+      <td>13946</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>volkswagen</td>
+      <td>kleinwagen</td>
+      <td>1626</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>volkswagen</td>
+      <td>limousine</td>
+      <td>3743</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trial.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(360, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(313683, 27)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prix-moyen-d-un-vehicule-par-marque-ainsi-que-par-type-de-vehicule">
+<h3><strong>Prix moyen d’un véhicule par marque ainsi que par type de véhicule</strong><a class="headerlink" href="#prix-moyen-d-un-vehicule-par-marque-ainsi-que-par-type-de-vehicule" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tri = trial.pivot(&quot;brand&quot;,&quot;vehicleType&quot;, &quot;avgPrice&quot;)
+fig, ax = plt.subplots(figsize=(20,25))
+sns.heatmap(tri,linewidths=1,cmap=&quot;YlGnBu&quot;,annot=True, ax=ax, fmt=&quot;d&quot;)
+ax.set_title(&quot;Prix moyen d&#39;un véhicule par marque ainsi que par type de véhicule&quot;,fontdict={&#39;size&#39;:20})
+ax.xaxis.set_label_text(&quot;Type de véhicule&quot;,fontdict= {&#39;size&#39;:20})
+ax.yaxis.set_label_text(&quot;Marque&quot;,fontdict= {&#39;size&#39;:20})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_80_0.png" src="_images/lecture01_80_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig((abs_path + &quot;/Plots/heatmap-price-brand-vehicleType.png&quot;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(329, 27)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>DF = df
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import glob
+import sys
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>search_term = str(sys.argv[1])
+
+path = abs_path + &quot;/CleanData/DataForAnalysis/&quot; + &quot;audi&quot; # use your path
+
+allFiles = glob.glob(path + &quot;/*.csv&quot;)
+frame = pd.DataFrame()
+list_ = []
+for file_ in allFiles:
+    df = pd.read_csv(file_,index_col=None, header=0)
+    list_.append(df)
+frame = pd.concat(list_)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>frame.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dateCrawled</th>
+      <th>name</th>
+      <th>seller</th>
+      <th>offerType</th>
+      <th>price</th>
+      <th>abtest</th>
+      <th>vehicleType</th>
+      <th>yearOfRegistration</th>
+      <th>gearbox</th>
+      <th>powerPS</th>
+      <th>...</th>
+      <th>postalCode</th>
+      <th>lastSeen</th>
+      <th>yearOfCreation</th>
+      <th>yearCrawled</th>
+      <th>monthOfCreation</th>
+      <th>monthCrawled</th>
+      <th>NoOfDaysOnline</th>
+      <th>NoOfHrsOnline</th>
+      <th>yearsOld</th>
+      <th>monthsOld</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2016-03-10 18:39:50</td>
+      <td>A3_2.0_TDI_Ambition</td>
+      <td>privat</td>
+      <td>Offer</td>
+      <td>2900</td>
+      <td>test</td>
+      <td>andere</td>
+      <td>2003</td>
+      <td>Unspecified</td>
+      <td>0</td>
+      <td>...</td>
+      <td>97996</td>
+      <td>2016-03-10 18:39:50</td>
+      <td>2016</td>
+      <td>2016.0</td>
+      <td>March</td>
+      <td>March</td>
+      <td>0.0</td>
+      <td>18.0</td>
+      <td>13.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2016-03-27 03:02:04</td>
+      <td>Audi_A3_2.0_FSI_Ambiente</td>
+      <td>privat</td>
+      <td>Offer</td>
+      <td>4990</td>
+      <td>test</td>
+      <td>andere</td>
+      <td>2003</td>
+      <td>manuell</td>
+      <td>150</td>
+      <td>...</td>
+      <td>74676</td>
+      <td>2016-03-30 14:46:54</td>
+      <td>2016</td>
+      <td>2016.0</td>
+      <td>March</td>
+      <td>March</td>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>13.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2016-03-24 09:46:49</td>
+      <td>Audi_a3_1.6</td>
+      <td>privat</td>
+      <td>Offer</td>
+      <td>2999</td>
+      <td>control</td>
+      <td>andere</td>
+      <td>2003</td>
+      <td>manuell</td>
+      <td>102</td>
+      <td>...</td>
+      <td>69181</td>
+      <td>2016-03-28 17:45:29</td>
+      <td>2016</td>
+      <td>2016.0</td>
+      <td>March</td>
+      <td>March</td>
+      <td>4.0</td>
+      <td>17.0</td>
+      <td>13.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2016-03-26 19:49:59</td>
+      <td>Audi_A2_90_PS_Akoyasilber_Klimaautomatik</td>
+      <td>privat</td>
+      <td>Offer</td>
+      <td>5250</td>
+      <td>control</td>
+      <td>andere</td>
+      <td>2004</td>
+      <td>manuell</td>
+      <td>90</td>
+      <td>...</td>
+      <td>63263</td>
+      <td>2016-04-06 21:44:49</td>
+      <td>2016</td>
+      <td>2016.0</td>
+      <td>March</td>
+      <td>March</td>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>12.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2016-03-19 11:49:43</td>
+      <td>Audi_A3_1.8T_Ambition__Kupplung_und_Turbo_fast...</td>
+      <td>privat</td>
+      <td>Offer</td>
+      <td>2200</td>
+      <td>test</td>
+      <td>andere</td>
+      <td>2001</td>
+      <td>manuell</td>
+      <td>150</td>
+      <td>...</td>
+      <td>75446</td>
+      <td>2016-03-20 13:44:50</td>
+      <td>2016</td>
+      <td>2016.0</td>
+      <td>March</td>
+      <td>March</td>
+      <td>1.0</td>
+      <td>13.0</td>
+      <td>15.0</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 27 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>frame.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(25237, 27)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>colors = [&quot;windows blue&quot;, &quot;amber&quot;, &quot;greyish&quot;, &quot;faded green&quot;, &quot;dusty purple&quot;]
+fig, ax = plt.subplots(figsize=(15,10))
+sns.set_palette(sns.xkcd_palette(colors))
+sns.stripplot(x=&quot;vehicleType&quot;, y=&quot;NoOfDaysOnline&quot;, hue=&quot;gearbox&quot;, dodge=True, data=frame,size=8, alpha=0.5, jitter=True)
+ax.set_title(&quot;N.d.jour où une annonce est en ligne avant que les véhicules audi soient vendus&quot;)
+ax.xaxis.set_label_text(&quot;Type de véhicule&quot;,fontdict= {&#39;size&#39;:14})
+ax.yaxis.set_label_text(&quot;Nombre de jours en ligne&quot;,fontdict= {&#39;size&#39;:14})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lecture01_88_0.png" src="_images/lecture01_88_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig.savefig((abs_path + &quot;/Plots/vehicletype-NoOfDaysOnline.png&quot;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>DF.shape
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(313683, 27)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><em><strong>Portfolio</strong></em></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture02.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Projet Complet de Data Science</strong></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Roland MONDJEHI<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
